@@ -262,7 +262,7 @@ public class Dane {
         return "data";
     }
         
-     void InsertQuery() {
+     String InsertQuery() {
         String connectionString =
                 "jdbc:sqlserver://sqlserverapp.database.windows.net:1433;"
                         + "database=database1;"
@@ -318,6 +318,7 @@ public class Dane {
             } catch (Exception e) {
             }
         }
+        return "database";
     }
     
     
