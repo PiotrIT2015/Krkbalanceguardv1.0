@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.List;
 import java.awt.event.ActionEvent;
@@ -9,16 +10,18 @@ import javax.swing.JPanel;
 
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import javax.swing.JSpinner;
 
 public class MainPanel extends JPanel implements ActionListener{
 	static int s = 100;
-
-	static JButton maintab[][] = new JButton[s][s];
+        
+        static JButton maintab[][] = new JButton[s][s];
 	static int tab[][] = new int[s][s];
 	static LinkedList<Point> pointslist = new LinkedList<Point>();
 	static int count = s*s;
 	static double dystab[][] = new double[s][s];
-	
+        	
 	static double A = 86710969050178.5;
 	static double B=9.41268203527779;
 	static double ro1=0, roznica;
@@ -104,6 +107,103 @@ public class MainPanel extends JPanel implements ActionListener{
 			test++;
 		}
 	}
+        
+        
+        
+        	static void circular(int[][] tabx){
+		
+		Random genx = new Random();
+		Random geny = new Random();
+		Random gencolor = new Random();
+		int x,y,color, test=0;
+                
+               
+		
+		while (test < 5){
+		x=genx.nextInt(s);
+		y=geny.nextInt(s);
+                      
+                    int r = (int) Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+                    
+                    int l = (int) Math.sqrt(Math.pow((x-test),2)+Math.pow((y-test),2));
+                   
+                    int S = (int)(3.14*Math.pow(l,2));
+                
+                while(r<s && x<S && y<S){    
+           	
+
+			//color=gencolor.nextInt(6)+1;
+                        color=4;
+			tabx[x][y]=color;
+                        
+                     y++;           
+                     x++;
+                      r++;
+                }
+                    test++;   
+                 }                         
+                      
+	}
+        
+        static void square(int[][] tabx){
+		
+		Random genx = new Random();
+		Random geny = new Random();
+		Random gencolor = new Random();
+		int x,y,color, test=0;
+              
+		
+		while (test < 5){
+		x=genx.nextInt(s);
+		y=geny.nextInt(s);
+                
+                  
+               for(int i=2; i<x; i++){
+	        for(int j=2; j<y; j++){	
+                    
+             
+                
+                   //color=gencolor.nextInt(6)+1;
+                     color=6;
+			tabx[i][j]=color;
+			test++;
+                        }
+                  }
+		}
+	}
+      
+         static void mc_p(int[][] tabx){
+		
+		Random genx = new Random();
+		Random geny = new Random();
+		Random gencolor = new Random();
+		int x,y,color, test=0;
+              
+		
+		while (test < 5){
+		x=genx.nextInt(s);
+		y=geny.nextInt(s);
+                
+                  
+               for(int i=2; i<s; i++){
+	        for(int j=2; j<s; j++){	
+                
+                    color=gencolor.nextInt(6)+1;
+                        //color=6;
+			tabx[i][j]=color;
+			test++;
+                        }
+                  }
+		}
+	}
+        
+        
+        
+        
+        
+        
+        
+        
 	
 	static void losujreg(int [][]tabx){
 		int reg=20;
@@ -179,6 +279,7 @@ public class MainPanel extends JPanel implements ActionListener{
 		tabx[xl][yl]=biggest;
 		count=count-2;
 		}
+                update(tabx, maintab);
 	}	
 	
 	
@@ -223,7 +324,7 @@ public class MainPanel extends JPanel implements ActionListener{
 				System.out.println(checktab[0]+""+checktab[1]+""+checktab[2]+""+checktab[3]+""+checktab[4]+""+checktab[5]+""+checktab[6]+" "+biggest);
 				
 				tabx[x2][y2]=biggest;
-				/*int p;
+				int p;
 			if(checktab[biggest]==4){
 				for(int i=0; i<7; i++){
 					if(i!=biggest) {
@@ -236,7 +337,7 @@ public class MainPanel extends JPanel implements ActionListener{
 				}
 			}else{
 				tabx[x2][y2]=biggest;
-			}*/
+			}
 	
 
 			counter--;
@@ -244,12 +345,511 @@ public class MainPanel extends JPanel implements ActionListener{
 	}
 	
 	
-	static void rec(int tabx[][]){
+	static void energy(int tabx[][]){   //my NEW!!!
+            
+            
+            ro1=(A/B+(1-A/B)*Math.exp(-B*t));
+		boolean tabb[][] = new boolean[s][s];
+		Random gen = new Random();
+		System.out.println(ro2);
+		int tab[][]=new int[s][s];
 		
+		for(int i=0; i<s; i++){
+			for(int j=0; j<s; j++){
+				tab[i][j]=tabx[i][j];
+			}
+		}
+		
+		for(int i=1; i<s-1; i++){
+			for(int j=1; j<s-1; j++){
+				if(tab[i-1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				
+				else tabb[i][j]=true;
+			}
+		}
+		
+		
+		int rr = gen.nextInt(5)+12; // to sa procenty - dzielone pozniej przez 10
+		int bb = gen.nextInt(4)+3;
+
+		for(int i=1; i<s-1; i=i+2){
+			for(int j=1; j<s-1; j=j+2){
+				//System.out.println(dystab[1][1]);
+				if(tabb[i][j]==false) 
+				{
+				dystab[i][j]+=((double)rr/10)*((ro1-ro2)/s*s);
+			//	System.out.println("w1 ");
+				}
+				else 
+				{
+			//		System.out.println("w2 ");
+					
+					dystab[i][j]+=((double)bb/10)*((ro1-ro2)/(s*s));
+				}
+				if(dystab[i][j]>=granica) {
+					
+				//	System.out.println(granica);
+					//int col = gen.nextInt(10);
+                                        
+					//int col = 9;// My best
+					int col2 = 0;
+                                        
+					tabx[i][j]=col2;
+					
+					
+			    roznica=dystab[i][j]-granica;
+				if (i>0&&i<s-1&&j>0&&j<s-1){
+					dystab[i-1][j]+=roznica/8;
+					dystab[i+1][j]+=roznica/8;
+					dystab[i-1][j-1]+=roznica/8;
+		            dystab[i][j-1]+=roznica/8;
+		            dystab[i+1][j-1]+=roznica/8;
+		            dystab[i-1][j+1]+=roznica/8;
+		            dystab[i][j+1]+=roznica/8;
+		            dystab[i+1][j+1]+=roznica/8;
+				}
+				//-------------
+				}
+                              /*  else if(dystab[i][j]<granica) {              //MY - wyodrębnia ziarna
+                                    
+                                    int col = 4;
+                                
+                                         tabx[i][j]=col;
+                                }*/
+                                    
+					
+					
+					
+			    
+                                	
+			}
+            
+                }
+	}
+        
+        static void energy_hetero(int tabx[][]){   //my NEW!!!
+            
+            
+            ro1=(A/B+(1-A/B)*Math.exp(-B*t));
+		boolean tabb[][] = new boolean[s][s];
+		Random gen = new Random();
+		System.out.println(ro2);
+		int tab[][]=new int[s][s];
+		
+		for(int i=0; i<s; i++){
+			for(int j=0; j<s; j++){
+				tab[i][j]=tabx[i][j];
+			}
+		}
+		
+		for(int i=1; i<s-1; i++){
+			for(int j=1; j<s-1; j++){
+				if(tab[i-1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				
+				else tabb[i][j]=true;
+			}
+		}
+		
+		
+		int rr = gen.nextInt(5)+12; // to sa procenty - dzielone pozniej przez 10
+		int bb = gen.nextInt(4)+3;
+
+		for(int i=1; i<s-1; i=i+2){
+			for(int j=1; j<s-1; j=j+2){
+				//System.out.println(dystab[1][1]);
+				if(tabb[i][j]==false) 
+				{
+				dystab[i][j]+=((double)rr/10)*((ro1-ro2)/s*s);
+			//	System.out.println("w1 ");
+				}
+				else 
+				{
+			//		System.out.println("w2 ");
+					
+					dystab[i][j]+=((double)bb/10)*((ro1-ro2)/(s*s));
+				}
+				if(dystab[i][j]>=granica) {
+					
+				//	System.out.println(granica);
+					//int col = gen.nextInt(10);
+					int col = 0;
+				
+                                
+                             //          for(int r=0; r<s; r++){
+	      //  for(int t=0; t<s; t++){	   
+                                        
+					tabx[i][j]=col;
+              //  }
+                      //                 }
+                                
+					
+			    roznica=dystab[i][j]-granica;
+				if(i>0&&i<s-1&&j>0&&j<s-1){
+                                 
+					dystab[i-1][j]+=roznica/8;
+					dystab[i+1][j]+=roznica/8;
+					dystab[i-1][j-1]+=roznica/8;
+		            dystab[i][j-1]+=roznica/8;
+		            dystab[i+1][j-1]+=roznica/8;
+		            dystab[i-1][j+1]+=roznica/8;
+		            dystab[i][j+1]+=roznica/8;
+		            dystab[i+1][j+1]+=roznica/8;                                                 
+				}
+				//-------------
+				}
+                                else if(dystab[i][j]<granica) {              //MY - wyodrębnia ziarna
+                                    
+                                    int col = 4;
+                                
+                                         tabx[i][j]=col;
+                                }
+                                    
+					
+					
+					
+			    
+                                	
+			}
+            
+                }
 	}
 	
+        	static void dualphase(int tabx[][]){   //my NEW!!!
+            
+            
+            ro1=(A/B+(1-A/B)*Math.exp(-B*t));
+		boolean tabb[][] = new boolean[s][s];
+		Random gen = new Random();
+		System.out.println(ro2);
+		int tab[][]=new int[s][s];
+		
+		for(int i=0; i<s; i++){
+			for(int j=0; j<s; j++){
+				tab[i][j]=tabx[i][j];
+			}
+		}
+		
+		for(int i=1; i<s-1; i++){
+			for(int j=1; j<s-1; j++){
+				if(tab[i-1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				
+				else tabb[i][j]=true;
+			}
+		}
+		
+		
+		int rr = gen.nextInt(5)+12; // to sa procenty - dzielone pozniej przez 10
+		int bb = gen.nextInt(4)+3;
+
+		for(int i=1; i<s-2; i=i+2){
+			for(int j=1; j<s-2; j=j+2){
+				//System.out.println(dystab[1][1]);
+				if(tabb[i][j]==false) 
+				{
+				dystab[i][j]+=((double)rr/10)*((ro1-ro2)/s*s);
+			//	System.out.println("w1 ");
+				}
+				else 
+				{
+			//		System.out.println("w2 ");
+					
+					dystab[i][j]+=((double)bb/10)*((ro1-ro2)/(s*s));
+				}
+				if(dystab[i][j]>=granica) {
+					
+				//	System.out.println(granica);
+					//int col = gen.nextInt(10);
+					int col = 11;
+                                        
+                                  
+		Random genx = new Random();
+		Random geny = new Random();
+		Random gencolor = new Random();
+		int x,y,color, test=0;
+                                        
+                                        x=genx.nextInt(s);
+		                        y=geny.nextInt(s);
+                
+				       color=gencolor.nextInt(6)+1;	
+                                       
+                                      
+                                       if(color != col)
+					tabx[i][j]=col;
+               
+					
+					
+			    roznica=dystab[i][j]-granica;
+				if (i>0&&i<s-1&&j>0&&j<s-1){
+					dystab[i-1][j]+=roznica/8;
+					dystab[i+1][j]+=roznica/8;
+					dystab[i-1][j-1]+=roznica/8;
+		            dystab[i][j-1]+=roznica/8;
+		            dystab[i+1][j-1]+=roznica/8;
+		            dystab[i-1][j+1]+=roznica/8;
+		            dystab[i][j+1]+=roznica/8;
+		            dystab[i+1][j+1]+=roznica/8;
+				}
+				//-------------
+				}
+                                else if(dystab[i][j]<=granica) {              //MY - wyodrębnia ziarna
+                                  
+                                    Random gencolor = new Random();
+                                        
+                         
+                                        
+                                    int col = 4, color = 0;
+                                    
+                                    
+                                        color=gencolor.nextInt(6)+1;
+                                
+                                        if(color != col)
+                                            tabx[i][j]=4;
+                                       // }else{
+                                        //   tabx[i][j]=color;  
+                                       // }
+                                        
+                                         
+                }
+                                 
+					
+					
+					
+			    
+                                	
+			}
+            
+                }
+	}
+        
+	static void energy_homo(int tabx[][]){   //my NEW!!!
+            
+            
+            ro1=(A/B+(1-A/B)*Math.exp(-B*t));
+		boolean tabb[][] = new boolean[s][s];
+		Random gen = new Random();
+		System.out.println(ro2);
+		int tab[][]=new int[s][s];
+		
+		for(int i=0; i<s; i++){
+			for(int j=0; j<s; j++){
+				tab[i][j]=tabx[i][j];
+			}
+		}
+		
+		for(int i=1; i<s-1; i++){
+			for(int j=1; j<s-1; j++){
+				if(tab[i-1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				
+				else tabb[i][j]=true;
+			}
+		}
+		
+		
+		int rr = gen.nextInt(5)+12; // to sa procenty - dzielone pozniej przez 10
+		int bb = gen.nextInt(4)+3;
+
+		for(int i=1; i<s-2; i=i+2){
+			for(int j=1; j<s-2; j=j+2){
+				//System.out.println(dystab[1][1]);
+				if(tabb[i][j]==false) 
+				{
+				dystab[i][j]+=((double)rr/10)*((ro1-ro2)/s*s);
+			//	System.out.println("w1 ");
+				}
+				else 
+				{
+			//		System.out.println("w2 ");
+					
+					dystab[i][j]+=((double)bb/10)*((ro1-ro2)/(s*s));
+				}
+				if(dystab[i][j]>=granica) {
+					
+				//	System.out.println(granica);
+					//int col = gen.nextInt(10);
+					int col = 11;
+                                        
+                                  
+		Random genx = new Random();
+		Random geny = new Random();
+		Random gencolor = new Random();
+		int x,y,color, test=0;
+                                        
+                                        x=genx.nextInt(s);
+		                        y=geny.nextInt(s);
+                
+                  
+              for(int r=0; r<s; r++){
+	        for(int t=0; t<s; t++){	
+					
+                                       
+                                        color=gencolor.nextInt(6)+1;
+                                        
+					tabx[r][t]=col;
+                
+                }
+              }
+					
+			    roznica=dystab[i][j]-granica;
+				if (i>0&&i<s-1&&j>0&&j<s-1){
+					dystab[i-1][j]+=roznica/8;
+					dystab[i+1][j]+=roznica/8;
+					dystab[i-1][j-1]+=roznica/8;
+		            dystab[i][j-1]+=roznica/8;
+		            dystab[i+1][j-1]+=roznica/8;
+		            dystab[i-1][j+1]+=roznica/8;
+		            dystab[i][j+1]+=roznica/8;
+		            dystab[i+1][j+1]+=roznica/8;
+				}
+				//-------------
+				}
+                                else if(dystab[i][j]<=granica) {              //MY - wyodrębnia ziarna
+                                    
+                                    int col = 4;
+                                
+                                         tabx[i][j]=col;
+                                }
+                                    
+					
+					
+					
+			    
+                                	
+			}
+            
+                }
+	}
 	
-	
+        	static void energy_homo2(int tabx[][]){   //my NEW!!!
+            
+            
+            ro1=(A/B+(1-A/B)*Math.exp(-B*t));
+		boolean tabb[][] = new boolean[s][s];
+		Random gen = new Random();
+		System.out.println(ro2);
+		int tab[][]=new int[s][s];
+		
+		for(int i=0; i<s; i++){
+			for(int j=0; j<s; j++){
+				tab[i][j]=tabx[i][j];
+			}
+		}
+		
+		for(int i=1; i<s-1; i++){
+			for(int j=1; j<s-1; j++){
+				if(tab[i-1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i-1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j-1]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j]!=tab[i][j]) tabb[i][j]=false; 
+				else if(tab[i+1][j+1]!=tab[i][j]) tabb[i][j]=false; 
+				
+				else tabb[i][j]=true;
+			}
+		}
+		
+		
+		int rr = gen.nextInt(5)+12; // to sa procenty - dzielone pozniej przez 10
+		int bb = gen.nextInt(4)+3;
+
+		for(int i=1; i<s-2; i=i+2){
+			for(int j=1; j<s-2; j=j+2){
+				//System.out.println(dystab[1][1]);
+				if(tabb[i][j]==false) 
+				{
+				dystab[i][j]+=((double)rr/10)*((ro1-ro2)/s*s);
+			//	System.out.println("w1 ");
+				}
+				else 
+				{
+			//		System.out.println("w2 ");
+					
+					dystab[i][j]+=((double)bb/10)*((ro1-ro2)/(s*s));
+				}
+				if(dystab[i][j]==granica) {
+					
+				//	System.out.println(granica);
+					//int col = gen.nextInt(10);
+					int col = 9;
+                                        
+                                  
+		Random genx = new Random();
+		Random geny = new Random();
+		Random gencolor = new Random();
+		int x,y,color, test=0;
+                                        
+                                        x=genx.nextInt(s);
+		                        y=geny.nextInt(s);
+                
+                  
+            
+					
+                                       
+                                        color=gencolor.nextInt(6)+1;
+                                        
+					tabx[i][j]=col;
+               
+					
+					
+			    roznica=dystab[i][j]-granica;
+				if (i>0&&i<s-1&&j>0&&j<s-1){
+					dystab[i-1][j]+=roznica/8;
+					dystab[i+1][j]+=roznica/8;
+					dystab[i-1][j-1]+=roznica/8;
+		            dystab[i][j-1]+=roznica/8;
+		            dystab[i+1][j-1]+=roznica/8;
+		            dystab[i-1][j+1]+=roznica/8;
+		            dystab[i][j+1]+=roznica/8;
+		            dystab[i+1][j+1]+=roznica/8;
+				}
+				//-------------
+				}
+                                else if(dystab[i][j]<=granica) {              //MY - wyodrębnia ziarna
+                                    
+                                    int col = 0;
+                                
+                                         tabx[i][j]=col;
+                                }
+                                    
+					
+					
+					
+			    
+                                	
+			}
+            
+                }
+	}
+        
 	static void mc2(int tabx[][]){
 		point();
 		int temp[][] = new int[s][s];
@@ -336,158 +936,9 @@ public class MainPanel extends JPanel implements ActionListener{
 		update(tabx, maintab);
 	}
 	
-	
-	
-	
-	
-	
-	
-	static void square_inclusion(int tabx[][]){
 
-            point();
-		int temp[][] = new int[s][s];
-		Random gen = new Random();
-		int x2,y2,rand, biggest;
-		
-		int checktab[]=new int[7];
-		
-		for(int i=0; i<s; i++){
-			for(int j=0; j<s; j++){
-				temp[i][j]=tabx[i][j];
-			}
-		}
-		
-		int counter = s*s;
-                
-                while(counter>0){
-			
-			for (int j=0 ;j<7;j++) {checktab[j]=0;}
-			rand=gen.nextInt(pointslist.size());
-			x2= pointslist.get(rand).x;
-			y2= pointslist.get(rand).y;
-			pointslist.remove(rand);
-			if(x2>0 && y2>0 && x2<s-1 && y2 <s-1){	
-				int n = tabx[x2][y2];
-				int il=0;
-				if(temp[x2-1][y2-1]==n) il++; 
-				if(temp[x2-1][y2]==n) il++; 
-				if(temp[x2-1][y2+1]==n) il++; 
-				if(temp[x2][y2-1]==n) il++; 
-				if(temp[x2][y2+1]==n) il++; 
-				if(temp[x2+1][y2-1]==n) il++; 
-				if(temp[x2+1][y2]==n) il++; 
-				if(temp[x2+1][y2+1]==n) il++; 
-				
-				if(il<4){
-					int a=0;
-					if(temp[x2-1][y2-1]!=n) a++; 
-					if(temp[x2-1][y2]!=n) a++; 
-					if(temp[x2-1][y2+1]!=n) a++; 
-					if(temp[x2][y2-1]!=n) a++; 
-					if(temp[x2][y2+1]!=n) a++; 
-					if(temp[x2+1][y2-1]!=n) a++; 
-					if(temp[x2+1][y2]!=n) a++; 
-					if(temp[x2+1][y2+1]!=n) a++; 
-					
-				}
-                                
-                                }
-				biggest = 0;
-				for(int i=0; i<7; i++){
-					if(checktab[i]>biggest) biggest = i;
-				}
-				
-				int ch=0;
-				int biggest2;
-				int first=0,second=0;
-				for(int i=0; i<7; i++){
-					if(checktab[i]==biggest) {
-						++ch;
-						if(ch==1) first=i;
-						if(ch==2) {
-							second=i;
-							biggest2=gen.nextInt(2);
-							if(biggest2 == 0) biggest=first;
-							else biggest = second;
-						}
-					}
-				}
-			//System.out.println(checktab[0]+""+checktab[1]+""+checktab[2]+""+checktab[3]+""+checktab[4]+""+checktab[5]+""+
-			//	checktab[6]+" "+biggest);
-			tabx[x2][y2]=biggest;
-			
-			counter--;
-		}
-		update(tabx, maintab);
-            
-        }
-	
-	static void circular_inclusion(int tabx[][]){
-		point();
-		int temp[][] = new int[s][s];
-		Random gen = new Random();
-		Random gen2 = new Random();
-		int x2,y2,rand, biggest;
-		for(int i=0; i<s; i++){
-			for(int j=0; j<s; j++){
-				temp[i][j]=tabx[i][j];
-			}
-		}
-		int checktab[]=new int[7];
-
-		int counter = s*s;
-		while(counter>0){
-
-			for (int j=0 ;j<7;j++) {checktab[j]=0;}
-			rand=gen.nextInt(pointslist.size());
-			x2= pointslist.get(rand).x;
-			y2= pointslist.get(rand).y;
-			pointslist.remove(rand);
-			if(x2>0 && y2>0 && x2<s-1 && y2 <s-1){	
-				for(int i=1 ;i<7; i++){
-					if(temp[x2-1][y2-1]==i) checktab[i]++; 
-					if(temp[x2-1][y2]==i) checktab[i]++;
-					if(temp[x2-1][y2+1]==i) checktab[i]++; 
-					if(temp[x2][y2-1]==i) checktab[i]++;
-					if(temp[x2][y2+1]==i) checktab[i]++; 
-					if(temp[x2+1][y2-1]==i) checktab[i]++;
-					if(temp[x2+1][y2]==i) checktab[i]++;
-					if(temp[x2+1][y2+1]==i) checktab[i]++;
-					
-					}
-				}
-				biggest = 0;
-				for(int i=0; i<7; i++){
-					if(checktab[i]>biggest) biggest = i;
-				}
-				System.out.println(checktab[0]+""+checktab[1]+""+checktab[2]+""+checktab[3]+""+checktab[4]+""+checktab[5]+""+checktab[6]+" "+biggest);
-				
-				tabx[x2][y2]=biggest;
-				int p;
-			if(checktab[biggest]==4){
-				for(int i=0; i<7; i++){
-					if(i!=biggest) {
-						if(checktab[i]==checktab[biggest]){
-							p=gen2.nextInt(2);
-							if(p==1)tabx[x2][y2]=biggest;
-							else tabx[x2][y2]=i;
-						}
-					}
-				}
-			}else{
-				tabx[x2][y2]=biggest;
-			}
-	
-
-			counter--;
-		}
-	}
-	
-	
-	
-	
-	
-
+       
+       
 	
 	
 	
@@ -602,5 +1053,9 @@ public class MainPanel extends JPanel implements ActionListener{
 					}
 				}
 	}
-	
+
+           
 }
+        
+
+

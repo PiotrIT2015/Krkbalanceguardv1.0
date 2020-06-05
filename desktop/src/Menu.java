@@ -1,7 +1,9 @@
+
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -17,28 +19,34 @@ public class Menu extends JPanel implements ActionListener{
 		JButton vonNeumann = new JButton("vonNeumann");
 		add(vonNeumann);
 		JButton pentleft = new JButton("pentleft");
-		add(pentleft);
+		//add(pentleft);
 		JButton pentright = new JButton("pentright");
-		add(pentright);
+		//add(pentright);
 		JButton pentup = new JButton("pentup");
-		add(pentup);
+		//add(pentup);
 		JButton pentdown = new JButton("pentdown");
-		add(pentdown);
+		//add(pentdown);
 		JButton hexright = new JButton("hexright");
-		add(hexright);
+		//add(hexright);
 		JButton hexleft = new JButton("hexleft");
-		add(hexleft);
+		//add(hexleft);
 		JButton rek = new JButton("rekrystalizacja");
 		add(rek);
 		JButton mc = new JButton("MonteCarlo");
 		add(mc);
-		JButton losuj = new JButton("losuj");
-		add(losuj);
+		
 		JButton losujreg = new JButton("losuj reg");
 		add(losujreg);
 		JButton period = new JButton("periodyczny");
 		add(period);
-	       
+                JButton energy = new JButton("Energia");
+		add(period);
+                JButton penta = new JButton("Pentagonalne");
+		add(penta);
+		JButton heksa = new JButton("Heksagonalne");
+		add(heksa);
+	       JButton dualphase = new JButton("Dualphase");
+		add(dualphase);
 		
 		
 		this.setLayout(new GridLayout(10,0));
@@ -48,6 +56,57 @@ public class Menu extends JPanel implements ActionListener{
 		
 		
 
+		
+		penta.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				for(int i=0 ;i<5; i++){
+                                    
+                                     Random r = new Random();
+                                    int p = r.nextInt(5)+1;                            
+                                    
+                                    switch(p){
+                                        case 1:
+                                                Rozrost.pentright(MainPanel.tab);
+                                        case 2:
+                                                Rozrost.pentleft(MainPanel.tab);
+                                        case 3:
+                                                Rozrost.pentup(MainPanel.tab);
+                                        case 4:
+                                                Rozrost.pentdown(MainPanel.tab);
+                                                      
+                                    }
+					//Rozrost.grains_amount(MainPanel.tab);
+					MainPanel.update(MainPanel.tab, MainPanel.maintab); 
+				}
+			}
+		});
+		
+		heksa.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				for(int i=0 ;i<5; i++){
+                                    
+                                    Random r = new Random();
+                                    int p = r.nextInt(5)+1;                            
+                                    
+                                    switch(p){
+                                        case 1:
+                                                Rozrost.hexleft(MainPanel.tab);
+                                        case 2:
+                                                Rozrost.hexright(MainPanel.tab);
+                                        default:
+                                                MainPanel.update(MainPanel.tab, MainPanel.maintab);       
+                                    }
+                               
+                                        //Rozrost.grains_amount(MainPanel.tab);
+				}
+			}
+		});
 		
 		
 		
@@ -160,11 +219,14 @@ public class Menu extends JPanel implements ActionListener{
 
 					MainPanel.rek(MainPanel.tab);
 					
+                                        //MainPanel.rec(MainPanel.tab); //my NEW
 			//		for(int i=0 ; i<50; i++) Rozrost.vonNeumann(MainPanel.tab);
 					MainPanel.update(MainPanel.tab, MainPanel.maintab);
 				
 			}
 		});
+                
+               
 		
 		
 	mc.addActionListener(new ActionListener() {
@@ -172,24 +234,19 @@ public class Menu extends JPanel implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					
-					MainPanel.mc(MainPanel.tab);
+                            for(int i=0 ;i<5; i++){
+                                
+                                MainPanel.mc_p(MainPanel.tab);
+					//MainPanel.mc(MainPanel.tab);
 					MainPanel.update(MainPanel.tab, MainPanel.maintab);
+                            }
 		
 			}
 		});
 		
 		
 		
-	losuj.addActionListener(new ActionListener() {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-				for(int i=0; i<5; i++)MainPanel.losuj(MainPanel.tab);
-				MainPanel.update(MainPanel.tab, MainPanel.maintab);
-			
-		}
-	});
+	
 		
 	losujreg.addActionListener(new ActionListener() {
 		
@@ -202,6 +259,24 @@ public class Menu extends JPanel implements ActionListener{
 			
 		}
 	});
+        
+        
+        dualphase.addActionListener(new ActionListener() {
+            
+           
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		
+                    MainPanel.dualphase(MainPanel.tab);
+				Rozrost.growth_reg(MainPanel.tab);
+				MainPanel.update(MainPanel.tab, MainPanel.maintab);
+        
+		}
+	});
+        
+        
 period.addActionListener(new ActionListener() {
 		
 		@Override
