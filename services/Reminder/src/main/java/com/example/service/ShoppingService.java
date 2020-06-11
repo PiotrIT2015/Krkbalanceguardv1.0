@@ -18,9 +18,9 @@ import java.sql.PreparedStatement;
  *
  * @author Piotr
  */
-public class DataService {
+public class ShoppingService {
 
-    DataService(){
+    ShoppingService(){
 
     }
 

@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
 @SpringBootApplication
 @Controller
 @EnableAutoConfiguration
-public class Springproj1Application {
+public class ShoppingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Springproj1Application.class, args);
+		SpringApplication.run(ShoppingApplication.class, args);
 	}
 }
