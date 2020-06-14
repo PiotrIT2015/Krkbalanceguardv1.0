@@ -1,1 +1,1 @@
-This module helps send information to Reminder(mobile app).
+Next microservice help improve cooperation between user and system advisor(gekon).
