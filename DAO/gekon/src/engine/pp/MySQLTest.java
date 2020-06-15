@@ -37,7 +37,7 @@ public class MySQLTest {
 /// Funkcja wyświetlania treści uchwały
     /**Funkcja ta odpowiada za pobranie treści uchwały z bazy danych i zwrócenie jej w postaci Stringa */
     public String viewTable() throws SQLException {
-        String query = "select tresc from sr where id=1";
+        String query = "select tresc from resolutions where id=1";
         String tresc = null;
 
         Statement stmt = null;
