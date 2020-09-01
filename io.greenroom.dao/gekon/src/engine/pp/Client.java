@@ -15,7 +15,7 @@ public class Client {
         {
             Registry registry = LocateRegistry.getRegistry(host);
             ServerInt stub = (ServerInt) registry.lookup("ServerInt");
-            String response = stub.pokazUchwale();
+            String response = stub.showResolution();
 
             System.out.println("Resolution: " + response);
             System.out.println("If you agree - choose 1, disagree - choose 2, or if you suspend - choose 3");
@@ -26,17 +26,17 @@ public class Client {
             switch (i) {
                 case 1:
                 {
-                    String info = stub.glosZa();
+                    String info = stub.voteAgree();
                     System.out.println(info);
                 }
                 case 2:
                 {
-                    String info = stub.glosPrzeciw();
+                    String info = stub.voteDisagree();
                     System.out.println(info);
                 }
                 case 3:
                 {
-                    String info = stub.glosBz();
+                    String info = stub.voteSuspended();
                     System.out.println(info);
                 }
 
