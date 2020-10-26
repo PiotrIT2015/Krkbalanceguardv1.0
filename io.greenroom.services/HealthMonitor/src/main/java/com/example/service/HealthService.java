@@ -18,14 +18,15 @@ import java.sql.PreparedStatement;
  *
  * @author Piotr
  */
-public class HealthService {
+public class HealthService implements Item {
 
     HealthService(){
 
     }
 
+    String name;
 
-    public String odczyt(){
+    public String getName(){
 
 
 
@@ -46,19 +47,9 @@ public class HealthService {
 
                 System.out.println(" [music= " + relax[0] + " , gallery=" + relax[1] + "]");
 
-                for(int i=0;i<=relax.length-1;i++)
-                {
-                    String Music[] = relax[2].split(cvsSplitBy);
-                    String Musiclist = Music[i] + Music[i+1];
-                    music.add(Musiclist);
-                }
+                music.add(relaxingFeatures(relax,0));
 
-                for(int i=0;i<=relax.length-1;i++)
-                {
-                    String Gallery[] = relax[2].split(cvsSplitBy);
-                    String Gallerylist = Gallery[i] + Gallery[i+1];
-                    gallery.add(Gallerylist);
-                }
+                gallery.add(relaxingFeatures(relax,1));
 
                 Iterator itr1 = music.iterator();
                 Iterator itr2 = gallery.iterator();
@@ -68,6 +59,7 @@ public class HealthService {
                     int musiclists = (int)musiclist;
                     Object gallerylist = itr2.next();
                     int gallerylists = (int)gallerylist;
+                    name=musiclist.toString()+gallerylist.toString();
                 }
 
 
@@ -86,11 +78,13 @@ public class HealthService {
                 }
             }
         }
+        
+        setName(name);
 
-        return "data";
+        return name;
     }
 
-    public String InsertQuery() {
+    public void setName(String name) {
         String connectionString =
                 "jdbc:sqlserver://sqlserverapp.database.windows.net:1433;"
                         + "database=database1;"
@@ -111,7 +105,7 @@ public class HealthService {
             connection = DriverManager.getConnection(connectionString);
 
             // Create and execute an INSERT SQL prepared statement.
-            String insertSql = odczyt();
+            String insertSql = getName();
 
             prepsInsertProduct = connection.prepareStatement(
                     insertSql,
@@ -147,7 +141,17 @@ public class HealthService {
             }
         }
 
-        return "database";
+    }
+
+    String relaxingFeatures(String relax[],int p){
+        String featureslist=null;
+
+        for(int i=0;i<=relax[p].length()-1;i++) {
+            String features[] = relax[i].split(",");
+            featureslist = features[i] + features[i + 1];
+        }
+
+        return featureslist;
     }
 
 

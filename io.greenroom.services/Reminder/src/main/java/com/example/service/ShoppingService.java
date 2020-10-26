@@ -24,8 +24,9 @@ public class ShoppingService {
 
     }
 
+    String name;
 
-    public String odczyt(){
+    public String getName(){
 
 
 
@@ -50,53 +51,22 @@ public class ShoppingService {
 
                 if(money[1].equals("trip") && money[4].equals("EUR"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int price2 = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash1.add(price2);
-                    }
+                    cash1.add(Integer.parseInt(countChargedValue(money,2)));
                 }else if(money[1].equals("ticket") && money[4].equals("EUR"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int price2 = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash1.add(price2);
-                    }
+                    cash1.add(Integer.parseInt(countChargedValue(money,2)));
                 }else if(money[1].equals("transfer") && money[4].equals("EUR"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int price2 = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash1.add(price2);
-                    }
+                    cash1.add(Integer.parseInt(countChargedValue(money,2)));
                 }else if(money[1].equals("trip") && money[4].equals("PLN"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int price2 = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash1.add(price2);
-                    }
+                    cash1.add(Integer.parseInt(countChargedValue(money,2)));
                 }else if(money[1].equals("ticket") && money[4].equals("PLN"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int price2 = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash1.add(price2);
-                    }
-
+                    cash1.add(Integer.parseInt(countChargedValue(money,2)));
                 }else if(money[1].equals("transfer") && money[4].equals("PLN"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int price2 = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash1.add(price2);
-                    }
+                    cash1.add(Integer.parseInt(countChargedValue(money,2)));
                 }
 
 
@@ -112,54 +82,22 @@ public class ShoppingService {
 
                 if(money[1].equals("trip") && money[4].equals("EUR"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[3].split(cvsSplitBy);
-                        int commission = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash2.add(commission);
-                    }
+                    cash2.add(Integer.parseInt(countChargedValue(money,3)));
                 }else if(money[1].equals("ticket") && money[4].equals("EUR"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[3].split(cvsSplitBy);
-                        int comission = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash2.add(comission);
-                    }
+                    cash2.add(Integer.parseInt(countChargedValue(money,3)));
                 }else if(money[1].equals("transfer") && money[4].equals("EUR"))
                 {
-
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[3].split(cvsSplitBy);
-                        int comission = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash2.add(comission);
-                    }
+                    cash2.add(Integer.parseInt(countChargedValue(money,3)));
                 }else if(money[1].equals("trip") && money[4].equals("PLN"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[3].split(cvsSplitBy);
-                        int comission = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash2.add(comission);
-                    }
+                    cash2.add(Integer.parseInt(countChargedValue(money,3)));
                 }else if(money[1].equals("ticket") && money[4].equals("PLN"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[3].split(cvsSplitBy);
-                        int comission = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash2.add(comission);
-                    }
-
+                    cash2.add(Integer.parseInt(countChargedValue(money,3)));
                 }else if(money[1].equals("transfer") && money[4].equals("PLN"))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[3].split(cvsSplitBy);
-                        int comission = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash2.add(comission);
-                    }
+                    cash2.add(Integer.parseInt(countChargedValue(money,3)));
                 }
 
 
@@ -172,53 +110,23 @@ public class ShoppingService {
 
                 if(money[1].equals("trip") && money[4].equals("EUR") && money[5].equals(false))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int chargevalue = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash3.add(chargevalue);
-                    }
+                    cash3.add(Integer.parseInt(countChargedValue(money,2)));
                 }else if(money[1].equals("ticket") && money[4].equals("EUR") && money[5].equals(false))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int chargevalue = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash3.add(chargevalue);
-                    }
+                    cash3.add(Integer.parseInt(countChargedValue(money,2)));
                 }else if(money[1].equals("transfer") && money[4].equals("EUR") && money[5].equals(false))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int chargevalue = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash3.add(chargevalue);
-                    }
+                    cash3.add(Integer.parseInt(countChargedValue(money,2)));
                 }else if(money[1].equals("trip") && money[4].equals("PLN") && money[5].equals(false))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int chargevalue = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash3.add(chargevalue);
-                    }
+                    cash3.add(Integer.parseInt(countChargedValue(money,2)));
                 }else if(money[1].equals("ticket") && money[4].equals("PLN") && money[5].equals(false))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int chargevalue = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash3.add(chargevalue);
-                    }
+                    cash3.add(Integer.parseInt(countChargedValue(money,2)));
 
                 }else if(money[1].equals("transfer") && money[4].equals("PLN") && money[5].equals(false))
                 {
-                    for(int i=0;i<=money.length-1;i++)
-                    {
-                        String price[] = money[2].split(cvsSplitBy);
-                        int chargevalue = Integer.parseInt(price[i]) + Integer.parseInt(price[i+1]);
-                        cash3.add(chargevalue);
-                    }
+                    cash3.add(Integer.parseInt(countChargedValue(money,2)));
                 }
 
 
@@ -235,6 +143,7 @@ public class ShoppingService {
                     int chargevalues = (int)chargevalue;
                     int settlmentvalue = prices - comissions - chargevalues;
                     System.out.println(prices+comissions+chargevalues+settlmentvalue);
+                    String name=price.toString()+"-"+comission.toString()+"-"+chargevalue.toString();
                 }
 
 
@@ -253,11 +162,13 @@ public class ShoppingService {
                 }
             }
         }
+        
+        setName(name);
 
-        return "data";
+        return name;
     }
 
-    public String InsertQuery() {
+    public void setName(String name) {
         String connectionString =
                 "jdbc:sqlserver://sqlserverapp.database.windows.net:1433;"
                         + "database=database1;"
@@ -278,7 +189,7 @@ public class ShoppingService {
             connection = DriverManager.getConnection(connectionString);
 
             // Create and execute an INSERT SQL prepared statement.
-            String insertSql = odczyt();
+            String insertSql = getName();
 
             prepsInsertProduct = connection.prepareStatement(
                     insertSql,
@@ -314,9 +225,18 @@ public class ShoppingService {
             }
         }
 
-        return "database";
     }
 
+    String countChargedValue(String money[],int p){
+        String chargedValue=null;
+
+        for(int i=0;i<=money[p].length()-1;i++) {
+            String price[] = money[i].split(",");
+            chargedValue = price[i] +","+ price[i + 1];
+        }
+
+        return chargedValue;
+    }
 
 
 }

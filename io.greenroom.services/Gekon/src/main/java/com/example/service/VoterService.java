@@ -24,8 +24,9 @@ public class VoterService {
 
     }
 
+    String item;
 
-    public String saveresolution(){
+    public String getItem(){
 
 
 
@@ -57,6 +58,7 @@ public class VoterService {
                 while(itr1.hasNext()) {
                     Object resolutionslist = itr1.next();
                     int resolutionslists = (int)resolutionslist;
+                    item=resolutionslist.toString();
                 }
 
 
@@ -76,10 +78,12 @@ public class VoterService {
             }
         }
 
-        return "data";
+        setItem(item);
+
+        return item;
     }
 
-    public String InsertQuery() {
+    public void setItem(String item) {
         String connectionString =
                 "jdbc:sqlserver://sqlserverapp.database.windows.net:1433;"
                         + "database=database1;"
@@ -100,7 +104,7 @@ public class VoterService {
             connection = DriverManager.getConnection(connectionString);
 
             // Create and execute an INSERT SQL prepared statement.
-            String insertSql = saveresolution();
+            String insertSql = getItem();
 
             prepsInsertProduct = connection.prepareStatement(
                     insertSql,
@@ -136,7 +140,6 @@ public class VoterService {
             }
         }
 
-        return "database";
     }
 
 

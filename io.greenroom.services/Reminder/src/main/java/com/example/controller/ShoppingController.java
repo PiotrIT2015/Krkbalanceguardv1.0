@@ -17,7 +17,7 @@ public class ShoppingController {
 
     @RequestMapping(value="/raport", method = RequestMethod.POST)
     public void Generuj(@ModelAttribute("SpringWeb") ShoppingService shoppingService, ModelMap model){
-        model.addAttribute("data", shoppingService.InsertQuery());
+        model.addAttribute("data", shoppingService.getName());
     }
 
 

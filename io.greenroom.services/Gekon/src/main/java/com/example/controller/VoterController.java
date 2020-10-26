@@ -17,7 +17,7 @@ public class VoterController {
 
     @RequestMapping(value="/raport", method = RequestMethod.POST)
     public void Generuj(@ModelAttribute("SpringWeb") VoterService voterService, ModelMap model){
-        model.addAttribute("data", voterService.InsertQuery());
+        model.addAttribute("data", voterService.getItem());
     }
 
 

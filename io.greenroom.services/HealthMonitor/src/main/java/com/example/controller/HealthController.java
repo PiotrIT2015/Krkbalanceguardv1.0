@@ -17,7 +17,7 @@ public class HealthController {
 
     @RequestMapping(value="/raport", method = RequestMethod.POST)
     public void Generuj(@ModelAttribute("SpringWeb") HealthService healthService, ModelMap model){
-        model.addAttribute("data", healthService.InsertQuery());
+        model.addAttribute("data", healthService.getName());
     }
 
 
