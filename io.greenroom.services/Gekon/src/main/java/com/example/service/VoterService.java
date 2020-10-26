@@ -20,11 +20,14 @@ import java.sql.PreparedStatement;
  */
 public class VoterService {
 
-    VoterService(){
+    private static final String FILE_SEPARATOR = "/";
+    String item, path, nameoffile;
 
+    public VoterService(String path){
+        this.path = path.startsWith(FILE_SEPARATOR) ? path : FILE_SEPARATOR + path;
+        String[] dirs = path.split(FILE_SEPARATOR);
+        this.item = dirs[dirs.length - 1];
     }
-
-    String item;
 
     public String getItem(){
 
@@ -140,6 +143,14 @@ public class VoterService {
             }
         }
 
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public String getNameOfFile() {
+        return nameoffile;
     }
 
 

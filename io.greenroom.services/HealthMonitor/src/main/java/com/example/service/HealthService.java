@@ -20,11 +20,16 @@ import java.sql.PreparedStatement;
  */
 public class HealthService implements Item {
 
-    HealthService(){
+    String name, path, nameoffile;
+    private static final String FILE_SEPARATOR = "/";
 
+    public HealthService(String path){
+        this.path = path.startsWith(FILE_SEPARATOR) ? path : FILE_SEPARATOR + path;
+        String[] dirs = path.split(FILE_SEPARATOR);
+        this.name = dirs[dirs.length - 1];
     }
 
-    String name;
+
 
     public String getName(){
 
@@ -154,6 +159,13 @@ public class HealthService implements Item {
         return featureslist;
     }
 
+    public String getPath() {
+        return path;
+    }
+
+    public String getNameOfFile() {
+        return nameoffile;
+    }
 
 
 }

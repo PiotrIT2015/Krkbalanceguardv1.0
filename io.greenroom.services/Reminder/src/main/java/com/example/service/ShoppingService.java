@@ -20,11 +20,16 @@ import java.sql.PreparedStatement;
  */
 public class ShoppingService {
 
-    ShoppingService(){
+    private static final String FILE_SEPARATOR = "/";
+    String name, path, nameoffile;
 
+    public ShoppingService(String path){
+        this.path = path.startsWith(FILE_SEPARATOR) ? path : FILE_SEPARATOR + path;
+        String[] dirs = path.split(FILE_SEPARATOR);
+        this.name = dirs[dirs.length - 1];
     }
 
-    String name;
+
 
     public String getName(){
 
@@ -237,6 +242,15 @@ public class ShoppingService {
 
         return chargedValue;
     }
+
+    public String getPath() {
+        return path;
+    }
+
+    public String getNameOfFile() {
+        return nameoffile;
+    }
+
 
 
 }
