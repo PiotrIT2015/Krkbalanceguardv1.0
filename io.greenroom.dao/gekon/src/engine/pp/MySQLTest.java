@@ -65,7 +65,7 @@ public class MySQLTest {
         String query = "select za, przeciw, wstrz from sr where id=1";
         int agree=0;
         int disagree=0;
-        String suspedned =null;
+        String suspended =null;
 
         Statement stmt = null;
         try {
@@ -77,7 +77,7 @@ public class MySQLTest {
                 disagree =rs.getInt("disagree");
                 suspended =rs.getString("suspended");
             }
-            System.out.println(za +"   "+ disagree+ "   " + suspended);
+            System.out.println(agree +"   "+ disagree+ "   " + suspended);
 
 
 
@@ -88,7 +88,7 @@ public class MySQLTest {
             // Zamknij obiekt Statement, aby natychmiast zwolnić jego pamięć
             if (stmt != null) { stmt.close(); }
         }
-        return ("WYNIKI: Glosow za: " +za + " Glosow przeciw: " + przeciw + " Wstrzymalo sie od glosow: " + wstrz);
+        return ("WYNIKI: Glosow za: " +agree + " Glosow przeciw: " + disagree + " Wstrzymalo sie od glosow: " + suspended);
     }
 
     /// Funkcja głosowania za uchwałą

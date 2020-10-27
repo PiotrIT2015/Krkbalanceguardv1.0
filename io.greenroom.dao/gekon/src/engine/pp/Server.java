@@ -80,7 +80,7 @@ public class Server implements ServerInt {
         try
         {
 
-            baza.updateDisagree();
+            database.updateDisagree();
             System.out.println("You voted against resolution.");
 
 

@@ -41,8 +41,8 @@ public class Client {
                 }
 
             }
-            String wyniki = stub.pokazGlosy();
-            System.out.println(wyniki);
+            String results = stub.showVotes();
+            System.out.println(results);
 
         }catch (Exception e)
         {
