@@ -14,6 +14,8 @@ target/
 *.iws
 *.iml
 *.ipr
+gradle/wrapper
+data
 
 ### NetBeans ###
 nbproject/private/
