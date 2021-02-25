@@ -1,5 +1,7 @@
 package engine.pp.services;
 
+import engine.pp.services.windowService;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -30,54 +32,20 @@ import java.awt.event.ActionEvent;
  * @author Piotr
  */
 @Service
-@Component
-@ComponentScan({"engine.pp"})
-public class shoppingService extends JFrame implements Item{
+public class shoppingService implements Item{
 
     private static final String FILE_SEPARATOR = "/";
     String name, path, nameoffile;
-
-    @Autowired
+    windowService window=new windowService();
+    /*@Autowired
     public shoppingService(String path){
         this.path = path.startsWith(FILE_SEPARATOR) ? path : FILE_SEPARATOR + path;
         String[] dirs = path.split(FILE_SEPARATOR);
         this.name = dirs[dirs.length - 1];
         initUI();
-    }
+    }*/
 
-    @PostConstruct
-    private void initUI() {
 
-        var quitButton = new JButton("Quit");
-
-        quitButton.addActionListener((ActionEvent event) -> {
-            System.exit(0);
-        });
-
-        createLayout(quitButton);
-
-        setTitle("Quit button");
-        setSize(300, 200);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-
-    private void createLayout(JComponent... arg) {
-
-        var pane = getContentPane();
-        var gl = new GroupLayout(pane);
-        pane.setLayout(gl);
-
-        gl.setAutoCreateContainerGaps(true);
-
-        gl.setHorizontalGroup(gl.createSequentialGroup()
-                .addComponent(arg[0])
-        );
-
-        gl.setVerticalGroup(gl.createSequentialGroup()
-                .addComponent(arg[0])
-        );
-    }
 
     @Bean
     public String getName(){
@@ -95,7 +63,7 @@ public class shoppingService extends JFrame implements Item{
 
         try {
 
-            br = new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new FileReader(window.initUI()));
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
