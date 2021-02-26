@@ -1,7 +1,7 @@
 package engine.pp.services;
 
 public interface Item {
-    void setName(String name);
-
+    void upload(String path);
     String getName();
+    String relaxingsound(String[] soundtracks,int index);
 }

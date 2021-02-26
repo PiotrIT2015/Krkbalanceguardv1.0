@@ -12,11 +12,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import java.net.URL;
+
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,7 +30,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class healthService implements Item{
 
-    String name, path, nameoffile;
+    String url_name, path, nameoffile;
     private static final String FILE_SEPARATOR = "/";
     windowService window=new windowService();
    /*@Autowired
@@ -41,38 +44,30 @@ public class healthService implements Item{
     @Bean
     public String getName(){
 
-
-
-        String csvFile = ".//data";
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ",";
-        ArrayList<String> music = new ArrayList<String>();
-        ArrayList<String> gallery = new ArrayList<String>();
+        String csvFile=".//data";
+        BufferedReader br=null;
+        String line="";
+        String cvsSplitBy=",";
+        ArrayList<String> music=new ArrayList<String>();
+        ArrayList<String> gallery=new ArrayList<String>();
 
         try {
 
-            br = new BufferedReader(new FileReader(window.initUI()));
-            while ((line = br.readLine()) != null) {
+            br=new BufferedReader(new FileReader(window.initUI()));
+            while ((line=br.readLine())!=null) {
 
                 // use comma as separator
-                String[] relax = line.split(cvsSplitBy);
-
-                System.out.println(" [music= " + relax[0] + " , gallery=" + relax[1] + "]");
-
-                music.add(relaxingFeatures(relax,0));
-
-                gallery.add(relaxingFeatures(relax,1));
+                String[] soundtracks=line.split(cvsSplitBy);
+                System.out.println("[music= "+soundtracks[0]+"]");
+                music.add(relaxingsound(soundtracks,0));
 
                 Iterator itr1 = music.iterator();
-                Iterator itr2 = gallery.iterator();
+
 
                 while(itr1.hasNext()) {
-                    Object musiclist = itr2.next();
+                    Object musiclist = itr1.next();
                     int musiclists = (int)musiclist;
-                    Object gallerylist = itr2.next();
-                    int gallerylists = (int)gallerylist;
-                    name=musiclist.toString()+gallerylist.toString();
+                    url_name=musiclist.toString();
                 }
 
 
@@ -92,12 +87,36 @@ public class healthService implements Item{
             }
         }
 
-        setName(name);
+        upload(url_name);
+        try{
+            String fileName = window.initUI();
+            String website = "http://piotrprochnicki.azurewebsites.net/images/"+fileName;
 
-        return name;
+            System.out.println("Downloading File From: " + website);
+
+            URL url=new URL(website);
+            InputStream inputStream=url.openStream();
+            OutputStream outputStream=new FileOutputStream(fileName);
+            byte[] buffer=new byte[2048];
+
+            int length=0;
+
+            while ((length=inputStream.read(buffer))!=-1) {
+                System.out.println("Buffer Read of length: "+length);
+                outputStream.write(buffer, 0,length);
+            }
+
+            inputStream.close();
+            outputStream.close();
+
+        } catch(Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+
+        return "Data is uploaded";
     }
 
-    public void setName(String name) {
+    public void upload(String name) {
         String connectionString =
                 "jdbc:sqlserver://sqlserverapp.database.windows.net:1433;"
                         + "database=database1;"
@@ -109,62 +128,62 @@ public class healthService implements Item{
                         + "loginTimeout=30;";
 
         // Declare the JDBC objects.
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        PreparedStatement prepsInsertProduct = null;
+        Connection connection=null;
+        Statement statement=null;
+        ResultSet resultSet=null;
+        PreparedStatement prepsInsertProduct=null;
 
         try {
-            connection = DriverManager.getConnection(connectionString);
+            connection=DriverManager.getConnection(connectionString);
 
             // Create and execute an INSERT SQL prepared statement.
-            String insertSql = getName();
+            String insertSql="INSERT INTO db (column1) VALUES (url_name)";
 
-            prepsInsertProduct = connection.prepareStatement(
+            prepsInsertProduct=connection.prepareStatement(
                     insertSql,
                     Statement.RETURN_GENERATED_KEYS);
             prepsInsertProduct.execute();
 
             // Retrieve the generated key from the insert.
-            resultSet = prepsInsertProduct.getGeneratedKeys();
+            resultSet=prepsInsertProduct.getGeneratedKeys();
 
             // Print the ID of the inserted row.
-            while (resultSet.next()) {
-                System.out.println("Generated: " + resultSet.getString(1));
+            while(resultSet.next()){
+                System.out.println("Generated: "+resultSet.getString(1));
             }
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
-        } finally {
+        }finally{
             // Close the connections after the data has been handled.
-            if (prepsInsertProduct != null) try {
+            if(prepsInsertProduct!=null)try{
                 prepsInsertProduct.close();
-            } catch (Exception e) {
+            }catch(Exception e){
             }
-            if (resultSet != null) try {
+            if(resultSet!=null) try{
                 resultSet.close();
-            } catch (Exception e) {
+            }catch(Exception e){
             }
-            if (statement != null) try {
+            if(statement != null) try{
                 statement.close();
-            } catch (Exception e) {
+            }catch(Exception e){
             }
-            if (connection != null) try {
+            if(connection != null) try{
                 connection.close();
-            } catch (Exception e) {
+            }catch(Exception e){
             }
         }
 
     }
 
-    String relaxingFeatures(String relax[],int p){
-        String featureslist=null;
+    public String relaxingsound(String soundtracks[],int p){
+        String soundtracklist=null;
 
-        for(int i=0;i<=relax[p].length()-1;i++) {
-            String features[] = relax[i].split(",");
-            featureslist = features[i] + features[i + 1];
+        for(int i=0;i<=soundtracks[p].length()-1;i++) {
+            String sountracks2[]=soundtracks[i].split(",");
+            soundtracklist = sountracks2[i]+soundtracks[i+1];
         }
 
-        return featureslist;
+        return soundtracklist;
     }
 
     public String getPath() {
