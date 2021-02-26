@@ -12,12 +12,16 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 
-import java.io.FileOutputStream;
+import javax.swing.*;
+import java.net.*;
+import java.awt.image.*;
+import javax.imageio.*;
+import java.io.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import java.net.URL;
+import javax.imageio.ImageIO;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -88,30 +92,45 @@ public class healthService implements Item{
         }
 
         upload(url_name);
-        try{
-            String fileName = window.initUI();
-            String website = "http://piotrprochnicki.azurewebsites.net/images/"+fileName;
 
-            System.out.println("Downloading File From: " + website);
+    try {
+        Socket soc;
+        BufferedImage img = null;
+        soc = new Socket("piotrprochnicki.azurewebsites.net/images", 4000);
+        System.out.println("Client is running. ");
 
-            URL url=new URL(website);
-            InputStream inputStream=url.openStream();
-            OutputStream outputStream=new FileOutputStream(fileName);
-            byte[] buffer=new byte[2048];
+        try {
+            System.out.println("Reading image from disk. ");
+            img = ImageIO.read(new File(window.initUI()));
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-            int length=0;
+            ImageIO.write(img, "jpg", baos);
+            baos.flush();
 
-            while ((length=inputStream.read(buffer))!=-1) {
-                System.out.println("Buffer Read of length: "+length);
-                outputStream.write(buffer, 0,length);
-            }
+            byte[] bytes = baos.toByteArray();
+            baos.close();
 
-            inputStream.close();
-            outputStream.close();
+            System.out.println("Sending image to server. ");
 
-        } catch(Exception e) {
+            OutputStream out = soc.getOutputStream();
+            DataOutputStream dos = new DataOutputStream(out);
+
+            dos.writeInt(bytes.length);
+            dos.write(bytes, 0, bytes.length);
+
+            System.out.println("Image sent to server. ");
+
+            dos.close();
+            out.close();
+
+        } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
+            soc.close();
         }
+        soc.close();
+    }catch(IOException e){
+        e.printStackTrace();
+    }
 
         return "Data is uploaded";
     }
