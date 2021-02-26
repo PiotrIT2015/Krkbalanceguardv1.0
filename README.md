@@ -4,8 +4,8 @@
 * [Setup](#setup)
 
 ## General info
-My the biggest project. This is my tool.  I was inspired by Cisco's tools like Webex and Spark. It should be use with "HealthMonitor" and "Reminder". 
-These are another project which I created. You can find by clicking my portfolio on my profile.
+This is main part of my system which can share i.e. music or mems. It'll also remind you about shopping and will communicate in other ways. It helps maintain balance i.e.in COVID-19. It should be
+use with "HealthMonitor" and "Reminder". These are another project which I created. 
 	
 ## Technologies
 Project is created with:
