@@ -96,7 +96,7 @@ public class healthService implements Item{
     try {
         Socket soc;
         BufferedImage img = null;
-        soc = new Socket("piotrprochnicki.azurewebsites.net/images", 4000);
+        soc = new Socket("https://prochnicki.yum.pl/images", 4000);
         System.out.println("Client is running. ");
 
         try {
