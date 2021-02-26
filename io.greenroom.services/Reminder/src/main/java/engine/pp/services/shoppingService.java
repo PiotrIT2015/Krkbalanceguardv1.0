@@ -185,12 +185,12 @@ public class shoppingService implements Item{
             }
         }
 
-        setName(name);
+        Upload(name);
 
         return name;
     }
 
-    public void setName(String name) {
+    public void Upload(String charge_value) {
         String connectionString =
                 "jdbc:sqlserver://sqlserverapp.database.windows.net:1433;"
                         + "database=database1;"
@@ -211,7 +211,7 @@ public class shoppingService implements Item{
             connection = DriverManager.getConnection(connectionString);
 
             // Create and execute an INSERT SQL prepared statement.
-            String insertSql = getName();
+            String insertSql = "INSERT INTO db (sounds_url) VALUES ('"+charge_value+"')";
 
             prepsInsertProduct = connection.prepareStatement(
                     insertSql,

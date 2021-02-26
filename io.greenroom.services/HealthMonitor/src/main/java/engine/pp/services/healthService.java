@@ -156,7 +156,7 @@ public class healthService implements Item{
             connection=DriverManager.getConnection(connectionString);
 
             // Create and execute an INSERT SQL prepared statement.
-            String insertSql="INSERT INTO db (column1) VALUES ('"+urlname+"')";
+            String insertSql="INSERT INTO db (sounds_url) VALUES ('"+urlname+"')";
 
             prepsInsertProduct=connection.prepareStatement(
                     insertSql,

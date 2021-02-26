@@ -90,12 +90,12 @@ public class voterService extends JFrame implements Item{
             }
         }
 
-        setItem(item);
+        Upload(item);
 
-        return item;
+        return "Data is uploaded";
     }
 
-    public void setItem(String item) {
+    public void Upload(String item) {
         String connectionString =
                 "jdbc:sqlserver://sqlserverapp.database.windows.net:1433;"
                         + "database=database1;"
@@ -116,7 +116,7 @@ public class voterService extends JFrame implements Item{
             connection = DriverManager.getConnection(connectionString);
 
             // Create and execute an INSERT SQL prepared statement.
-            String insertSql = getItem();
+            String insertSql = "INSERT INTO db (sounds_url) VALUES ('"+item+"')";
 
             prepsInsertProduct = connection.prepareStatement(
                     insertSql,
