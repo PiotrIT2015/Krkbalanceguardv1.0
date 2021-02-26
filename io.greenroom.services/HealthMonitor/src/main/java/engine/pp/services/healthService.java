@@ -63,7 +63,7 @@ public class healthService implements Item{
                 // use comma as separator
                 String[] soundtracks=line.split(cvsSplitBy);
                 System.out.println("[music= "+soundtracks[0]+"]");
-                music.add(relaxingsound(soundtracks,0));
+                music.add(relaxingSound(soundtracks,0));
 
                 Iterator itr1 = music.iterator();
 
@@ -91,7 +91,7 @@ public class healthService implements Item{
             }
         }
 
-        upload(url_name);
+        Upload(url_name);
 
     try {
         Socket soc;
@@ -135,7 +135,7 @@ public class healthService implements Item{
         return "Data is uploaded";
     }
 
-    public void upload(String name) {
+    public void Upload(String urlname) {
         String connectionString =
                 "jdbc:sqlserver://sqlserverapp.database.windows.net:1433;"
                         + "database=database1;"
@@ -156,7 +156,7 @@ public class healthService implements Item{
             connection=DriverManager.getConnection(connectionString);
 
             // Create and execute an INSERT SQL prepared statement.
-            String insertSql="INSERT INTO db (column1) VALUES (url_name)";
+            String insertSql="INSERT INTO db (column1) VALUES ('"+urlname+"')";
 
             prepsInsertProduct=connection.prepareStatement(
                     insertSql,
@@ -194,7 +194,7 @@ public class healthService implements Item{
 
     }
 
-    public String relaxingsound(String soundtracks[],int p){
+    public String relaxingSound(String soundtracks[],int p){
         String soundtracklist=null;
 
         for(int i=0;i<=soundtracks[p].length()-1;i++) {
