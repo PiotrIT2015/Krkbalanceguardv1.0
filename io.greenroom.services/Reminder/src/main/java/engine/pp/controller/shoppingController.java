@@ -19,6 +19,4 @@ public class shoppingController {
     public void Generuj(@ModelAttribute("SpringWeb") shoppingService shoppingService, ModelMap model){
         model.addAttribute("data", shoppingService.getName());
     }
-
-
 }

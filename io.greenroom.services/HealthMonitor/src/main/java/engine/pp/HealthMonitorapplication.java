@@ -18,9 +18,7 @@ public class HealthMonitorapplication {
 
 		var ctx = new SpringApplicationBuilder(HealthMonitorapplication.class)
 				.headless(false).run(args);
-
 		EventQueue.invokeLater(() -> {
-
 			var ex = ctx.getBean(windowService.class);
 			//ex.setVisible(true);
 		});

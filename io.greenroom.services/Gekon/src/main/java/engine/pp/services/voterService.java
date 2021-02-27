@@ -35,47 +35,32 @@ public class voterService extends JFrame implements Item{
         initUI();
     }*/
 
-
-
     @Bean
     public String getItem(){
-
-
-
         String csvFile = ".//data";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
         ArrayList<String> resolutions = new ArrayList<String>();
-
         try {
-
             br = new BufferedReader(new FileReader(window.initUI()));
             while ((line = br.readLine()) != null) {
-
                 // use comma as separator
                 String[] law = line.split(cvsSplitBy);
-
                 System.out.println(" [law= " + law[0] + "]");
-
                 for(int i=0;i<=law.length-1;i++)
                 {
                     String resolution[] = law[2].split(cvsSplitBy);
                     String resolutionslist = resolution[i] + resolution[i+1];
                     resolutions.add(resolutionslist);
                 }
-
                 Iterator itr1 = resolutions.iterator();
-
                 while(itr1.hasNext()) {
                     Object resolutionslist = itr1.next();
                     int resolutionslists = (int)resolutionslist;
                     item=resolutionslist.toString();
                 }
-
-
             }
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -111,21 +96,16 @@ public class voterService extends JFrame implements Item{
         Statement statement = null;
         ResultSet resultSet = null;
         PreparedStatement prepsInsertProduct = null;
-
         try {
             connection = DriverManager.getConnection(connectionString);
-
             // Create and execute an INSERT SQL prepared statement.
             String insertSql = "INSERT INTO db (sounds_url) VALUES ('"+item+"')";
-
             prepsInsertProduct = connection.prepareStatement(
                     insertSql,
                     Statement.RETURN_GENERATED_KEYS);
             prepsInsertProduct.execute();
-
             // Retrieve the generated key from the insert.
             resultSet = prepsInsertProduct.getGeneratedKeys();
-
             // Print the ID of the inserted row.
             while (resultSet.next()) {
                 System.out.println("Generated: " + resultSet.getString(1));

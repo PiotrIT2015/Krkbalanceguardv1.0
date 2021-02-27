@@ -27,15 +27,12 @@ public class windowService {
 
     @PostConstruct
     String initUI() {
-
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setAcceptAllFileFilterUsed(false);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("csv files", "csv");
         fileChooser.addChoosableFileFilter(filter);
         fileChooser.showOpenDialog(null);
-
         String path = fileChooser.getSelectedFile().getAbsolutePath();
-
         return path;
     }
 }

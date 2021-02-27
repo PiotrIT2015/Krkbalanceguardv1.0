@@ -19,9 +19,7 @@ public class Gekonapplication {
 
 		var ctx = new SpringApplicationBuilder(Gekonapplication.class)
 				.headless(false).run(args);
-
 		EventQueue.invokeLater(() -> {
-
 			var ex = ctx.getBean(windowService.class);
 			//ex.setVisible(true);
 		});

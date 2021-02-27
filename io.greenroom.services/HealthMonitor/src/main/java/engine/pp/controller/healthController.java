@@ -20,6 +20,4 @@ public class healthController {
     public void Generuj(@ModelAttribute("SpringWeb") healthService healthService, ModelMap model){
         model.addAttribute("dane",healthService.getName());
     }
-
-
 }

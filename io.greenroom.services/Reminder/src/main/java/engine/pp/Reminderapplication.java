@@ -19,9 +19,7 @@ public class Reminderapplication {
 
 		var ctx = new SpringApplicationBuilder(Reminderapplication.class)
 				.headless(false).run(args);
-
 		EventQueue.invokeLater(() -> {
-
 			var ex = ctx.getBean(windowService.class);
 			//ex.setVisible(true);
 		});
