@@ -17,7 +17,10 @@ Project is created with:
 To run this project, install it locally using Docker:
 
 ```
-$ cd ../Greenroom
 $ docker build Dockerfile
 $ docker run
+$ mkdir Greenroom
+$ cd ../Greenroom
+$ git init
+$ git pull https://github.com/PiotrIT2015/Greenroom.git
 ```
