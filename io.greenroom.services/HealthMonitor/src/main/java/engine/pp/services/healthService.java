@@ -23,6 +23,21 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.xml.namespace.QName;
+import org.aarboard.nextcloud.api.utils.WebdavInputStream;
+import org.aarboard.nextcloud.api.ServerConfig;
+import org.aarboard.nextcloud.api.exception.NextcloudApiException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.apache.http.client.utils.URIBuilder;
+
+import com.github.sardine.Sardine;
+import com.github.sardine.SardineFactory;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
@@ -33,17 +48,107 @@ import org.springframework.stereotype.Service;
 //@SpringBootApplication
 @Service
 public class healthService implements Item{
+    private static final Logger LOG = LoggerFactory.getLogger(healthService.class);
+
+    private final ServerConfig _serverConfig;
+
+    public healthService(ServerConfig serverConfig) {
+        _serverConfig = serverConfig;
+    }
 
     String url_name, path, nameoffile;
     private static final String FILE_SEPARATOR = "/";
     windowService window = new windowService();
-   /*@Autowired
-    public healthService(String path){
-        this.path = path.startsWith(FILE_SEPARATOR) ? path : FILE_SEPARATOR + path;
-        String[] dirs = path.split(FILE_SEPARATOR);
-        this.name = dirs[dirs.length - 1];
-        //initUI();
-    }*/
+    private static final String ADMINPP_BASE_PATH = "remote.php/adminpp/";
+
+    protected String buildWebdavPath(String remotePath)
+    {
+        URIBuilder uB= new URIBuilder()
+                .setScheme(_serverConfig.isUseHTTPS() ? "https" : "http")
+                .setHost(_serverConfig.getServerName())
+                .setPort(_serverConfig.getPort())
+                .setPath(
+                        _serverConfig.getSubpathPrefix() == null ?
+                                ADMINPP_BASE_PATH + remotePath :
+                                _serverConfig.getSubpathPrefix()+ "/" + ADMINPP_BASE_PATH + remotePath
+                );
+        return uB.toString();
+    }
+
+    protected Sardine buildAuthSardine()
+    {
+        Sardine sardine = SardineFactory.begin();
+        sardine.setCredentials(_serverConfig.getUserName(), _serverConfig.getPassword());
+        sardine.enablePreemptiveAuthentication(_serverConfig.getServerName());
+
+        return sardine;
+    }
+
+    public void uploadFile(File localSource, String remotePath) {
+        String path = buildWebdavPath(remotePath);
+        Sardine sardine = buildAuthSardine();
+
+        try
+        {
+            sardine.put(path, localSource, null, true);
+        } catch (IOException e)
+        {
+            throw new NextcloudApiException(e);
+        }
+        finally
+        {
+            try
+            {
+                sardine.shutdown();
+            }
+            catch(Exception ex2)
+            {
+                LOG.warn("Error in sardine shutdown", ex2);
+            }
+        }
+    }
+
+    public void uploadFile(InputStream inputStream, String remotePath) {
+        uploadFile(inputStream, remotePath, true);
+    }
+
+    public void uploadFile(InputStream inputStream, String remotePath, boolean continueHeader) {
+        String path = buildWebdavPath(remotePath);
+
+        Sardine sardine = buildAuthSardine();
+
+        try
+        {
+            sardine.put(path, inputStream, null, continueHeader);
+        } catch (IOException e)
+        {
+            throw new NextcloudApiException(e);
+        }
+        finally
+        {
+            try
+            {
+                sardine.shutdown();
+            }
+            catch(Exception ex2)
+            {
+                LOG.warn("Error in sardine shutdown", ex2);
+            }
+        }
+    }
+
+
+    private long convertStringToLong(String number)
+    {
+        if (number == null || number.equals(""))
+        {
+            return 0;
+        }
+        else
+        {
+            return Long.parseLong(number);
+        }
+    }
 
     @Bean
     public String getName(){
@@ -85,35 +190,10 @@ public class healthService implements Item{
 
         Upload(url_name);
 
-    try {
-        Socket soc;
-        BufferedImage img = null;
-        soc = new Socket("https://prochnicki.yum.pl/images", 4000);
-        System.out.println("Client is running. ");
-        try {
-            System.out.println("Reading image from disk. ");
-            img = ImageIO.read(new File(window.initUI()));
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(img, "jpg", baos);
-            baos.flush();
-            byte[] bytes = baos.toByteArray();
-            baos.close();
-            System.out.println("Sending image to server. ");
-            OutputStream out = soc.getOutputStream();
-            DataOutputStream dos = new DataOutputStream(out);
-            dos.writeInt(bytes.length);
-            dos.write(bytes, 0, bytes.length);
-            System.out.println("Image sent to server. ");
-            dos.close();
-            out.close();
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-            soc.close();
-        }
-        soc.close();
-    }catch(IOException e){
-        e.printStackTrace();
-    }
+        File file = new File(window.initUI());
+
+        uploadFile(file, "https://cloud.pp/images");
+
         return "Data is uploaded";
     }
 
