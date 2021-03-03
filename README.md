@@ -26,7 +26,7 @@ $ git init
 $ git pull https://github.com/PiotrIT2015/Greenroom.git
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
 ```
-##Run
+## Run
 To run this project:
 * run several services in InteliJ
 * run GUI in InteliJ
