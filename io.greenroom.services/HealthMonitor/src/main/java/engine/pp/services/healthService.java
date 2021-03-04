@@ -12,8 +12,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 
-import org.aarboard.nextcloud.api.ServerConfig;
 import java.io.File;
+import org.aarboard.nextcloud.api.ServerConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -29,8 +29,8 @@ public class healthService implements Item{
     String url_name, path, nameoffile;
     private static final String FILE_SEPARATOR = "/";
     windowService window = new windowService();
-    private final ServerConfig serverConfig=null;
-    nextcloudServices cloud = new nextcloudServices(serverConfig);
+    ServerConfig serverconfig=new ServerConfig("cloudpp.com",true,22,"root","12345");
+    nextcloudServices cloud = new nextcloudServices(serverconfig);
 
     @Bean
     public String getName(){
@@ -74,7 +74,7 @@ public class healthService implements Item{
 
         File file = new File(window.initUI());
 
-        cloud.uploadFile(file, "https://cloud.pp/images");
+        cloud.uploadFile(file, "https://cloudpp.com/images");
 
         return "Data is uploaded";
     }
