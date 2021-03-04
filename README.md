@@ -26,6 +26,9 @@ $ git init
 $ git pull https://github.com/PiotrIT2015/Greenroom.git
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
 ```
+
+How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
+
 ## Run
 To run this project:
 * run several services in InteliJ
