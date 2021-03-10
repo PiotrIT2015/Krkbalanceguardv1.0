@@ -28,8 +28,8 @@ How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?
 
 ## Run
 To run this project:
-* run several services in IntelliJ
-* run GUI in IntelliJ
+* run several services in IntelliJ IDEA
+* run GUI in IntelliJ IDEA
 ```
 $ cd ../io.greenroom/dao/gekon/src/engine/pp
 $ javac Server.java
