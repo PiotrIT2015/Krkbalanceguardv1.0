@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
  */
 //@SpringBootApplication
 @Service
-public class healthService implements Item{
+public class healthService implements Item {
 
     String url_name, path, nameoffile;
     private static final String FILE_SEPARATOR = "/";
