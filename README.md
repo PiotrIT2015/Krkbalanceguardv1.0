@@ -18,11 +18,11 @@ Project is created with:
 To setup this project, install it locally using Docker:
 
 ```
+$ git clone https://github.com/PiotrIT2015/Greenroom.git
 $ docker build -t Dockerfile .
 $ docker run -dit --name my-running-app -p 8080:80 Dockerfile
 $ docker run --rm httpd:2.4 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
 $ docker run -d -p 8080:80 nextcloud
-$ git clone https://github.com/PiotrIT2015/Greenroom.git
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
 ```
 
