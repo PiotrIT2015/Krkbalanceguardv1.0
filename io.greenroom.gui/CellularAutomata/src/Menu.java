@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 
-public class Menu extends JPanel implements ActionListener {
+public class Menu extends JPanel /*implements ActionListener*/ {
     Rozrost rozrost;
     MainPanel mainPanel;
 
@@ -15,8 +15,8 @@ public class Menu extends JPanel implements ActionListener {
         this.rozrost = new Rozrost(mainPanel);
         JPanel menubutt = new JPanel();
         setSize(200, 200);
-        JButton moore = new JButton("moore");
-        add(moore);
+//        JButton moore = new JButton("moore");
+        add(new Moore(mainPanel, rozrost));
         JButton vonNeumann = new JButton("vonNeumann");
         add(vonNeumann);
         JButton pentleft = new JButton("pentleft");
@@ -33,8 +33,8 @@ public class Menu extends JPanel implements ActionListener {
         //add(hexleft);
         JButton rek = new JButton("rekrystalizacja");
         add(rek);
-        JButton mc = new JButton("MonteCarlo");
-        add(mc);
+//        JButton mc = new JButton("MonteCarlo");
+        add(new MonteCarlo(mainPanel));
 
         JButton losujreg = new JButton("losuj reg");
         add(losujreg);
@@ -105,17 +105,17 @@ public class Menu extends JPanel implements ActionListener {
         });
 
 
-        moore.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                for (int i = 0; i < 5; i++) {
-                    rozrost.periodmoore(mainPanel.tab);
-                    mainPanel.update(mainPanel.tab, mainPanel.maintab);
-                }
-            }
-        });
+//        moore.addActionListener(new ActionListener() {
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                for (int i = 0; i < 5; i++) {
+//                    rozrost.periodmoore(mainPanel.tab);
+//                    mainPanel.update(mainPanel.tab, mainPanel.maintab);
+//                }
+//            }
+//        });
 
         vonNeumann.addActionListener(new ActionListener() {
 
@@ -220,20 +220,20 @@ public class Menu extends JPanel implements ActionListener {
         });
 
 
-        mc.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                for (int i = 0; i < 5; i++) {
-
-                    mainPanel.mc_p(mainPanel.tab);
-                    //mainPanel.mc(mainPanel.tab);
-                    mainPanel.update(mainPanel.tab, mainPanel.maintab);
-                }
-
-            }
-        });
+//        mc.addActionListener(new ActionListener() {
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                for (int i = 0; i < 5; i++) {
+//
+//                    mainPanel.mc_p(mainPanel.tab);
+//                    //mainPanel.mc(mainPanel.tab);
+//                    mainPanel.update(mainPanel.tab, mainPanel.maintab);
+//                }
+//
+//            }
+//        });
 
 
         losujreg.addActionListener(new ActionListener() {
@@ -277,10 +277,10 @@ public class Menu extends JPanel implements ActionListener {
     }
 
 
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
+//    @Override
+//    public void actionPerformed(ActionEvent arg0) {
+//         //TODO Auto-generated method stub
+//
+//    }
 
 }
