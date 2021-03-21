@@ -1,3 +1,5 @@
+##Greenroom(system for entertainment in free time)
+
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
@@ -31,7 +33,11 @@ How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?
 ## Run
 To run this project:
 * run several services in IntelliJ IDEA
-* run GUI in IntelliJ IDEA
+* run Cellular Automata(GUI's module) in IntelliJ IDEA
+* run FIRA(GUI's module) on SimurSot(you can change how robots run)
+
+SimurSot source code:https://github.com/fira-simurosot/FIRASim
+
 ```
 $ cd ../io.greenroom/dao/gekon/src/engine/pp
 $ javac Server.java
