@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Strategy2008">
+</Property><Property Name="Solution File" Value="C:\Users\student\Desktop\Strategy VS 2008\Strategy2008.sln">
+</Property><Property Name="Date" Value="9 listopada 2015">
+</Property><Property Name="Time" Value="09:55">
+</Property></Properties><Event ErrorLevel="0" Project="Strategy" Source="Strategy.vcproj" Description="Converting project file 'C:\Users\student\Desktop\Strategy VS 2008\Strategy.vcproj'.">
+</Event><Event ErrorLevel="1" Project="Strategy" Source="Strategy.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="Strategy" Source="Strategy.vcproj" Description="MSB8012: $(TargetName) ('Strategy') does not match the Linker's OutputFile property value 'C:\Strategy\yellow\Team2.dll' ('Team2') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetName) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="Strategy" Source="Strategy.vcproj" Description="MSB8012: $(TargetPath) ('C:\Users\student\Desktop\Strategy VS 2008\.\Debug\Strategy.dll') does not match the Linker's OutputFile property value 'C:\Strategy\yellow\Team2.dll' ('C:\Strategy\yellow\Team2.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="Strategy" Source="Strategy.vcproj" Description="MSB8012: $(TargetPath) ('C:\Users\student\Desktop\Strategy VS 2008\.\Release\Strategy.dll') does not match the Linker's OutputFile property value '.\Release/Strategy.dll' ('C:\Users\student\Desktop\Strategy VS 2008\Release/Strategy.dll') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="Strategy" Source="Strategy.vcproj" Description="Done converting to new project file 'C:\Users\student\Desktop\Strategy VS 2008\Strategy.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="Strategy" Source="Strategy.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Strategy2008.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Strategy2008.sln" Description="Converted">
+</Event></UpgradeLog>
