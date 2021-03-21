@@ -18,7 +18,7 @@
 
 # Fortran module files
 *.mod
-*.smod
+*.smo
 
 # Compiled Static libraries
 *.lai
@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+*.suo
+*.suo.*
+*.sdf
+*.ncb
+*.db
+
+ipch
+.vs
+_UpgradeReport_Files
+Debug
+UpgradeLog
