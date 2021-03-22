@@ -41,7 +41,7 @@ How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?
 
 ## Running
 To run this project:
-* run several services in IntelliJ IDEA
+* run several services in IntelliJ IDEA(they send data to mobile apps i.e.shopping list, images or youtube's links)
 * run Cellular Automata(GUI's module) in IntelliJ IDEA
 * run FIRA(GUI's module) on SimurSot(This is a football game in which gamers can change how robots run).
 
