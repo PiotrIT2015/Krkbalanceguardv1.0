@@ -71,7 +71,7 @@ $ python3.7 app.py
 * To scann your network use following commands:
 
 ```
-$ cd ../io.greenroom/mapper/nwtworktools/src
+$ cd ../io.greenroom/mapper/networktools/src
 $ python3.7 netscan1.py
 $ python3.7 netscan2.py
 ```
