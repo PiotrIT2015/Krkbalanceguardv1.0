@@ -17,9 +17,9 @@ Project is created with:
 * mysql-connector-java library version: 5.1.35
 	
 ## Setup
-To setup this project on Windows you must first install Linux Subsystem for Windows.
+To setup this project on Windows you must first install a Linux Subsystem for Windows.
 
-This is video with description how to do it: https://www.youtube.com/watch?v=1ap3hL-UR9I
+This is a video with a description how to do it: https://www.youtube.com/watch?v=1ap3hL-UR9I
 
 ...,then install it locally using Docker:
 
@@ -39,7 +39,7 @@ How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?
 To run this project:
 * run several services in IntelliJ IDEA
 * run Cellular Automata(GUI's module) in IntelliJ IDEA
-* run FIRA(GUI's module) on SimurSot(This is football game in which gamer can change how robots run).
+* run FIRA(GUI's module) on SimurSot(This is a football game in which gamers can change how robots run).
 
 SimurSot source code:https://github.com/fira-simurosot/FIRASim
 
