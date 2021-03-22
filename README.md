@@ -21,11 +21,15 @@ To setup this project on Windows you must first install a Linux Subsystem for Wi
 
 This is a video with a description how to do it: https://www.youtube.com/watch?v=1ap3hL-UR9I
 
-...,then install it locally using Docker:
+...,then install it locally using Docker(using following commands):
 
 ```
 $ bash
+$ sudo apt install git
 $ git clone https://github.com/PiotrIT2015/Greenroom.git
+$ sudo apt install docker.io
+$ sudo systemctl start docker
+$ sudo systemctl enable docker
 $ docker build -t dockerfile .
 $ docker run -dit --name my-running-app -p 8080:80 dockerfile
 $ docker run --rm httpd:2.4 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
