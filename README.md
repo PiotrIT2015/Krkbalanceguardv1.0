@@ -64,8 +64,8 @@ $ java Client
 * To download future releases use following commands:
 
 ```
-$ cd ../io.greenroom/dao/updater/src
-$ python3.7 app.py
+$ cd ../io.greenroom/dao/updater
+$ python3.7 gh-download.py
 ```
 
 * To scann your network use following commands:
