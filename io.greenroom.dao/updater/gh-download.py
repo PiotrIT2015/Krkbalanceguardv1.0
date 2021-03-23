@@ -84,9 +84,9 @@ def main(argv):
         elif opt in ("-f", "--folder"):
             folder = arg
 
-    github = Github(token)
-    organization = github.get_organization(org)
-    repository = organization.get_repo(repo)
+    github = Github(2e8f61532039cba58ff14c335948b7a061e57825)
+    organization = github.get_organization(PiotrIT2015)
+    repository = organization.get_repo(Greenroom)
     sha = get_sha_for_tag(repository, branch)
     download_directory(repository, sha, folder)
 
