@@ -25,6 +25,9 @@ This is a video with a description how to do it: https://www.youtube.com/watch?v
 
 ```
 $ bash
+$ sudo apt install git
+$ git clone https://github.com/PiotrIT2015/Greenroom.git
+$ cd ./Greenroom
 $ sudo apt install docker.io
 $ sudo systemctl start docker
 $ sudo systemctl enable docker
@@ -33,9 +36,6 @@ $ docker run -dit --name my-running-app -p 8080:80 dockerfile
 $ docker run --rm httpd:2.4 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
 $ docker run -d -p 8080:80 nextcloud
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
-$ sudo apt install git
-$ git clone https://github.com/PiotrIT2015/Greenroom.git
-$ cd ./Greenroom
 ```
 
 How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
