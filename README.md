@@ -31,7 +31,7 @@ $ cd ./Greenroom
 $ sudo apt install docker.io
 $ sudo systemctl start docker
 $ sudo systemctl enable docker
-$ docker build -t dockerfile .
+$ docker-compose up
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
 ```
 

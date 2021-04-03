@@ -1,13 +1,13 @@
 version: "3.2"
 services:
   php:
-    build: './php/'
+    build: './env/php/'
     networks:
       - backend
     volumes:
       - ./public_html/:/var/www/html/
   apache:
-    build: './apache/'
+    build: './env/apache/'
     depends_on:
       - php
       - mysql
@@ -19,12 +19,18 @@ services:
     volumes:
       - ./public_html/:/var/www/html/
   nextcloud:
-    build: './nextcloud/'
+    build: './env/nextcloud/'
     depends_on:
       - php
       - mysql
     networks:
       - frontend
+    ports:
+      - "8080:80"
+  greenroom:
+    build: './software/'
+    networks:
+      - backend
     ports:
       - "8080:80"
   mysql:
