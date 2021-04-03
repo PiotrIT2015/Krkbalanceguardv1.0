@@ -33,6 +33,7 @@ $ sudo systemctl start docker
 $ sudo systemctl enable docker
 $ docker-compose up
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
+$ docker-compose down -v
 ```
 
 How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
