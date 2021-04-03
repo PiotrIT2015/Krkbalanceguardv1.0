@@ -32,9 +32,6 @@ $ sudo apt install docker.io
 $ sudo systemctl start docker
 $ sudo systemctl enable docker
 $ docker build -t dockerfile .
-$ docker run -dit --name my-running-app -p 8080:80 dockerfile
-$ docker run --rm httpd:2.4 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
-$ docker run -d -p 8080:80 nextcloud
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
 ```
 
