@@ -16,11 +16,5 @@ services:
       - backend
     environment:
       - MYSQL_ROOT_PASSWORD=rootpassword
-  greenroom:
-    build: './software/'
-    networks:
-      - backend
-    ports:
-      - "8080:80"
 networks:
   backend:
