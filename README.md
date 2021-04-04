@@ -35,6 +35,8 @@ $ docker-compose up
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
 $ docker-compose down -v
 $ docker run -d -p 8080:80 nextcloud
+$ cd ./Greenroom/software
+$ docker build -t Dockerfile .
 ```
 
 How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
