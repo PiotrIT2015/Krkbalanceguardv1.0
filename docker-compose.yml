@@ -16,5 +16,7 @@ services:
       - backend
     environment:
       - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_USER=piotr
+      - MYSQL_PASSWORD=qwerty123
 networks:
   backend:
