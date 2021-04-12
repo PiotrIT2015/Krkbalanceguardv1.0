@@ -4,10 +4,8 @@ MAINTAINER Peter Prochnicki <piotr.prochnicki@gmail.com>
 
 RUN apt-get update 
 
-RUN apt-get install -y openjdk-11-jre
- 
-RUN apt-get install -y python3.7
- 
-RUN apt-get install -y phpmyadmin
- 
-RUN apt-get install -y net-tools
+RUN apt-get install -y \
+	openjdk-11-jre \
+	python3.7 \
+	phpmyadmin \
+	net-tools
