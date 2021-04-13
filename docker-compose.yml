@@ -1,11 +1,18 @@
 version: "3.2"
 services:
+  php:
+    build: './env/php/'
+    networks:
+      - backend
+    volumes:
+      - ./public_html/:/var/www/html/
   apache:
     build: './env/apache/'
     depends_on:
       - mysql
     networks:
-      - backend
+	  - frontend
+	  - backend
     ports:
       - "8080:80"
     volumes:
@@ -19,4 +26,5 @@ services:
       - MYSQL_USER=piotr
       - MYSQL_PASSWORD=qwerty123
 networks:
+  frontend:
   backend:
