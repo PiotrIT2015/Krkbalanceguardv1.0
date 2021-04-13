@@ -34,7 +34,7 @@ $ sudo systemctl enable docker
 $ docker-compose up
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
 $ cd ./Greenroom/software
-$ docker build -t dockerfile .
+$ docker build .
 ```
 
 How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
