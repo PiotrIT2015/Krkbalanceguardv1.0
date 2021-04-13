@@ -36,7 +36,7 @@ $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=lin
 $ cd ./Greenroom/software
 $ docker build .
 $ docker container run -i -t --name Greenroom <image id>
-$ docker container run -i -t nextcloud
+$ docker container run -d -p 8080:80 nextcloud
 $ docker container run -i -t mariadb
 ```
 
