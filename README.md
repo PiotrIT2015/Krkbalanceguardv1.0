@@ -17,27 +17,27 @@ Project is created with:
 * mysql-connector-java library version: 5.1.35
 	
 ## Setup
-To setup this project on Windows you must first install a Linux Subsystem for Windows.
+To setup this project on Windows you must first install a Docker for Windows.
 
-This is a video with a description how to do it: https://www.youtube.com/watch?v=1ap3hL-UR9I
+This can be do it by visit this website: https://hub.docker.com/editions/community/docker-ce-desktop-windows/
 
 ...,then install it locally using Docker(using following commands):
 
 ```
 $ bash
-$ sudo apt install git
+$ docker pull piotrit2015/greenroomos:1
+$ docker container run -i -t --name greenroomOS piotrit2015/greenroomos
+$ cd home
+$ mkdir <username>
+$ cd <username>
 $ git clone https://github.com/PiotrIT2015/Greenroom.git
-$ cd ./Greenroom
-$ sudo apt install docker.io
-$ sudo systemctl start docker
-$ sudo systemctl enable docker
-$ docker-compose up
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
-$ cd ./Greenroom/software
-$ docker build .
-$ docker container run -i -t --name Greenroom <image id>
+$ cd ./Greenroom
+$ systemctl start docker
+$ systemctl enable docker
+$ docker-compose up
 $ docker container run -d -p 8080:80 nextcloud
-$ docker container run -i -t mariadb
+$ docker container run -d -p mariadb
 ```
 
 How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
