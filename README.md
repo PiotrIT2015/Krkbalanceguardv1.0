@@ -35,6 +35,9 @@ $ docker-compose up
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
 $ cd ./Greenroom/software
 $ docker build .
+$ docker container run -i -t --name Greenroom <image id>
+$ docker container run -i -t nextcloud
+$ docker container run -i -t mariadb
 ```
 
 How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
