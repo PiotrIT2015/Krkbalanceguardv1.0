@@ -25,7 +25,7 @@ This can be do it by visit this website: https://hub.docker.com/editions/communi
 
 ```
 $ bash
-$ docker pull piotrit2015/greenroomos:1
+$ docker pull piotrit2015/greenroomos
 $ docker container run -i -t --name greenroomOS piotrit2015/greenroomos
 $ cd home
 $ mkdir <username>
