@@ -33,8 +33,6 @@ $ sudo systemctl start docker
 $ sudo systemctl enable docker
 $ docker-compose up
 $ wget https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
-$ docker-compose down -v
-$ docker run -d -p 8080:80 nextcloud
 $ cd ./Greenroom/software
 $ docker build -t dockerfile .
 ```
