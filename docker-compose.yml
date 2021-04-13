@@ -3,7 +3,7 @@ services:
   php:
     build: './env/php/'
     networks:
-      - backend
+      - frontend
     volumes:
       - ./public_html/:/var/www/html/
   apache:
