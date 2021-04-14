@@ -41,7 +41,7 @@ $ docker container run -d -p mariadb
 How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
 
 ## Running
-To run this project:
+To run this project(inside greenroomos container):
 * run several services(they send data to mobile apps i.e.shopping list, images or youtube's links)
 
 ```
