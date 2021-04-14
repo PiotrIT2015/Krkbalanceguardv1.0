@@ -24,7 +24,6 @@ This can be do it by visit this website: https://hub.docker.com/editions/communi
 ...,then install it locally using Docker(using following commands):
 
 ```
-$ bash
 $ docker pull piotrit2015/greenroomos
 $ docker container run -i -t --name greenroomOS piotrit2015/greenroomos
 $ cd home
