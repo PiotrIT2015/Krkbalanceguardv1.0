@@ -51,12 +51,12 @@ public class shoppingService implements Item{
 
     @Bean
     public String getName(){
-        String csvFile = ".//data";
+        String csvFile = "./data/shopping-list.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
         try {
-            br = new BufferedReader(new FileReader(window.initUI()));
+            br = new BufferedReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {
                 // use comma as separator
                 String[] money = line.split(cvsSplitBy);

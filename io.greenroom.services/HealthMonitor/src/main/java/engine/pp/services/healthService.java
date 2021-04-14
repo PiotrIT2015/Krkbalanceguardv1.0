@@ -35,7 +35,7 @@ public class healthService implements Item {
     @Bean
     public String getName(){
 
-        String csvFile = ".//data";
+        String csvFile = "./data/health-list.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
@@ -43,7 +43,7 @@ public class healthService implements Item {
         ArrayList<String> gallery = new ArrayList<String>();
 
         try {
-            br=new BufferedReader(new FileReader(window.initUI()));
+            br=new BufferedReader(new FileReader(csvFile));
             while ((line=br.readLine()) != null) {
                 // use comma as separator
                 String[] soundtracks=line.split(cvsSplitBy);

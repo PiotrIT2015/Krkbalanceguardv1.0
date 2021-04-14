@@ -37,13 +37,13 @@ public class voterService extends JFrame implements Item{
 
     @Bean
     public String getItem(){
-        String csvFile = ".//data";
+        String csvFile = "./data/resolution-list.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
         ArrayList<String> resolutions = new ArrayList<String>();
         try {
-            br = new BufferedReader(new FileReader(window.initUI()));
+            br = new BufferedReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {
                 // use comma as separator
                 String[] law = line.split(cvsSplitBy);
