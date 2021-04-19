@@ -37,7 +37,8 @@ $ docker-compose up
 $ docker container run -d -p 8080:80 nextcloud
 $ docker container inspect nextcloud | grep IP
 $ docker container run -d -P mariadb
-$ elinks <IP>  
+$ elinks <IP>:80
+$ elinks <IP>:443  
 ```
 
 How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
