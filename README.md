@@ -36,7 +36,7 @@ $ systemctl enable docker
 $ docker-compose up
 $ docker container run -d -p 8080:80 nextcloud
 $ docker container run -d -p mariadb
-$ elinks <IP> 
+$ elinks <IP>  
 ```
 
 How to configure Nextcloud with Apache on Ubuntu: https://www.youtube.com/watch?v=-tW3_cmGkns
