@@ -35,7 +35,8 @@ $ systemctl start docker
 $ systemctl enable docker
 $ docker-compose up
 $ docker container run -d -p 8080:80 nextcloud
-$ docker container run -d -p mariadb
+$ docker container inspect nextcloud | grep IP
+$ docker container run -d -P mariadb
 $ elinks <IP>  
 ```
 
