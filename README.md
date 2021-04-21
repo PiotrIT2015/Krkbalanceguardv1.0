@@ -34,9 +34,9 @@ $ cd ./Greenroom
 $ systemctl start docker
 $ systemctl enable docker
 $ docker-compose up
-$ docker container run -d -p -P 8080:80 nextcloud
+$ docker container run -d -p -P 80:80 nextcloud
 $ docker container inspect nextcloud | grep IP
-$ docker container run -d -P mariadb
+$ docker container run -d -p -P 443:443 mariadb
 $ elinks http://<IP>:80
 $ elinks http://<IP>:443  
 ```
