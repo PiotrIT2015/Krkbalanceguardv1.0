@@ -37,6 +37,7 @@ $ docker-compose up
 $ docker container run -d -p -P 80:80 nextcloud
 $ docker container inspect nextcloud | grep IP
 $ docker container run -d -p -P 443:443 mariadb
+$ docker container inspect mariadb | grep IP
 $ elinks http://<IP>:80
 $ elinks http://<IP>:443  
 ```
