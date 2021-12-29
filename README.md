@@ -49,7 +49,7 @@ To run this project(inside greenroomos container):
 * run several services(they send data to mobile apps i.e.shopping list, images or youtube's links)
 
 ```
-$ cd ../io.greenroom/services/<certain-cervice>
+$ cd ../io.greenchamber/services/<certain-cervice>
 $ gradle build
 $ gradle run
 ```
@@ -64,7 +64,7 @@ To use rest of project's functionalities use following commands:
 * To vote for resolution with other user:
 
 ```
-$ cd ../io.greenroom/dao/gekon/src/engine/pp
+$ cd ../io.greenchamber/dao/gekon/src/engine/pp
 $ javac Server.java
 $ javac ServerInt.java
 $ javac Client.java
@@ -76,14 +76,14 @@ $ java Client
 * To download future releases use following commands:
 
 ```
-$ cd ../io.greenroom/dao/updater
+$ cd ../io.greenchamber/dao/updater
 $ python3.7 gh-download.py
 ```
 
 * To scann your network use following commands:
 
 ```
-$ cd ../io.greenroom/mapper/networktools
+$ cd ../io.greenchamber/mapper/networktools
 $ python3.7 netscan1.py
 $ python3.7 netscan2.py
 ```
