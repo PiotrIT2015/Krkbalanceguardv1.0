@@ -25,12 +25,12 @@ This can be do it by visit this website: https://hub.docker.com/editions/communi
 
 ```
 $ docker pull piotrit2015/greenroomos
-$ docker container run -i -t --name greenroomOS piotrit2015/greenroomos
+$ docker container run -i -t --name greenchamberOS piotrit2015/greenroomos
 $ cd home
 $ mkdir <username>
 $ cd <username>
-$ git clone https://github.com/PiotrIT2015/Greenroom.git
-$ cd ./Greenroom
+$ git clone https://github.com/PiotrIT2015/Greenchamber.git
+$ cd ./Greenchamber
 $ systemctl start docker
 $ systemctl enable docker
 $ docker-compose up
