@@ -1,4 +1,4 @@
-## Greenroom(system for entertainment in free time)
+## Greenchamber(system for entertainment in free time)
 
 ## Table of contents
 * [General info](#general-info)
