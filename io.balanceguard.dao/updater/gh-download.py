@@ -86,7 +86,7 @@ def main(argv):
 
     github = Github(2e8f61532039cba58ff14c335948b7a061e57825)
     organization = github.get_organization(PiotrIT2015)
-    repository = organization.get_repo(Greenroom)
+    repository = organization.get_repo(balanceguard)
     sha = get_sha_for_tag(repository, branch)
     download_directory(repository, sha, folder)
 
