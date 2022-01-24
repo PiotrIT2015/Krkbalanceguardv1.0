@@ -1,4 +1,4 @@
-## Greenchamber(system for entertainment in free time)
+## BalanceGuard(system for entertainment in free time)
 
 ## Table of contents
 * [General info](#general-info)
@@ -25,12 +25,12 @@ This can be do it by visit this website: https://hub.docker.com/editions/communi
 
 ```
 $ docker pull piotrit2015/greenroomos
-$ docker container run -i -t --name greenchamberOS piotrit2015/greenroomos
+$ docker container run -i -t --name GuardOS piotrit2015/greenroomos
 $ cd home
 $ mkdir <username>
 $ cd <username>
-$ git clone https://github.com/PiotrIT2015/Greenchamber.git
-$ cd ./Greenchamber
+$ git clone https://github.com/PiotrIT2015/balanceguard.git
+$ cd ./balanceguard
 $ systemctl start docker
 $ systemctl enable docker
 $ docker-compose up
@@ -49,7 +49,7 @@ To run this project(inside greenroomos container):
 * run several services(they send data to mobile apps i.e.shopping list, images or youtube's links)
 
 ```
-$ cd ../io.greenchamber/services/<certain-cervice>
+$ cd ../io.balanceguard/services/<certain-cervice>
 $ gradle build
 $ gradle run
 ```
@@ -64,7 +64,7 @@ To use rest of project's functionalities use following commands:
 * To vote for resolution with other user:
 
 ```
-$ cd ../io.greenchamber/dao/gekon/src/engine/pp
+$ cd ../io.balanceguard/dao/gekon/src/engine/pp
 $ javac Server.java
 $ javac ServerInt.java
 $ javac Client.java
@@ -76,14 +76,14 @@ $ java Client
 * To download future releases use following commands:
 
 ```
-$ cd ../io.greenchamber/dao/updater
+$ cd ../io.balanceguard/dao/updater
 $ python3.7 gh-download.py
 ```
 
 * To scann your network use following commands:
 
 ```
-$ cd ../io.greenchamber/mapper/networktools
+$ cd ../io.balanceguard/mapper/networktools
 $ python3.7 netscan1.py
 $ python3.7 netscan2.py
 ```
