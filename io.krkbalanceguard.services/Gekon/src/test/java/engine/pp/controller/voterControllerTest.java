@@ -1,24 +1,22 @@
-package engine.pp;
+package engine.pp.controller;
 
-import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import engine.pp.controller.shoppingController;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.junit.Assert.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class ReminderApplicationTests {
+public class voterControllerTest {
 
     @Autowired
-    shoppingController shoppingController;
+    private voterController voterController;
 
     @Test
-    public void contextLoads() {
-        Assertions.assertThat(shoppingController).isNot(null);
+    void testGeneruj() {
+        assertNotNull("Data is uploaded", voterController);
     }
-
 }

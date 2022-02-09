@@ -1,24 +1,24 @@
-package engine.pp;
+package engine.pp.controller;
 
-import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import engine.pp.controller.voterController;
-
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class GekonApplicationTests {
+class shoppingControllerTest {
 
 	@Autowired
-	voterController voterController;
+	private shoppingController shoppingController;
 
 	@Test
-	public void contextLoads() {
-		Assertions.assertThat(voterController).isNot(null);
+	void testGeneruj() {
+		assertNotNull("Data is uploaded", shoppingController);
 	}
 
 }

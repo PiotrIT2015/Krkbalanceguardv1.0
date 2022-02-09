@@ -17,7 +17,10 @@ dependencies {
 	implementation 'org.aarboard.nextcloud:nextcloud-api:11.1.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'junit:junit:4.13'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 	implementation group: 'org.springframework', name: 'spring-context'
+	testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.16.0'
 }
 
 test{
