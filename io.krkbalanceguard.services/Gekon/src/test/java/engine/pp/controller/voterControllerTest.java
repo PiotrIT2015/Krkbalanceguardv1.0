@@ -7,7 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest
+import engine.pp.Gekonapplication;
+
+@SpringBootTest(classes=Gekonapplication.class)
 public class voterControllerTest {
 
     @Autowired
