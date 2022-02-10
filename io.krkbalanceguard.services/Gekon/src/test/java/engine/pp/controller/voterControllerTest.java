@@ -9,6 +9,10 @@ import static org.junit.Assert.assertNotNull;
 
 import engine.pp.Gekonapplication;
 
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
+
+@RunWith(JUnitPlatform.class)
 @SpringBootTest(classes=Gekonapplication.class)
 public class voterControllerTest {
 

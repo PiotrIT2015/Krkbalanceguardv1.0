@@ -10,6 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import engine.pp.Reminderapplication;
 
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
+
+@RunWith(JUnitPlatform.class)
 @SpringBootTest(classes=Reminderapplication.class)
 class shoppingControllerTest {
 

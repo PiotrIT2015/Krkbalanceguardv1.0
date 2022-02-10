@@ -17,10 +17,15 @@ dependencies {
 	implementation 'org.aarboard.nextcloud:nextcloud-api:11.1.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'junit:junit:4.13'
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+	testImplementation "org.junit.jupiter:junit-jupiter-params:5.0.0"
+	testImplementation "org.junit.jupiter:junit-jupiter-api:5.0.0-M6"
+	testRuntimeOnly "org.junit.vintage:junit-vintage-engine:4.12.0"
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.0.0"
 	implementation group: 'org.springframework', name: 'spring-context'
 	testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.16.0'
+	implementation group: 'org.junit.platform', name: 'junit-platform-gradle-plugin', version: '1.2.0'
+	testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.7.0'
+
 }
 
 test{
@@ -29,4 +34,5 @@ test{
 
 test {
 	useJUnitPlatform()
+	//includeEngines("junit-jupiter","junit-vintage")
 }
