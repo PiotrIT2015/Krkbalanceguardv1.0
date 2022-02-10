@@ -32,6 +32,11 @@ test{
 }
 
 test {
-	useJUnitPlatform()
-	include '**/*Pdf'
+	useJUnitPlatform {
+		includeEngines "junit-jupiter"
+		excludeEngines "junit-vintage"
+	}
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
 }

@@ -33,6 +33,11 @@ test{
 }
 
 test {
-	useJUnitPlatform()
-	//includeEngines("junit-jupiter","junit-vintage")
+	useJUnitPlatform {
+		includeEngines "junit-jupiter"
+		excludeEngines "junit-vintage"
+	}
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
 }
