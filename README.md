@@ -29,7 +29,7 @@ $ docker container run -i -t --name GuardOS piotrit2015/greenroomos
 $ cd home
 $ mkdir <username>
 $ cd <username>
-$ git clone https://github.com/PiotrIT2015/balanceguard.git
+$ git clone https://github.com/PiotrIT2015/krkbalanceguard.git
 $ cd ./balanceguard
 $ systemctl start docker
 $ systemctl enable docker
