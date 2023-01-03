@@ -24,8 +24,8 @@ This can be do it by visit this website: https://hub.docker.com/editions/communi
 ...,then install it locally using Docker(using following commands):
 
 ```
-$ docker pull piotrit2015/greenroomos:5
-$ docker container run -i -t --name GuardOS piotrit2015/greenroomos:5
+$ docker pull piotrit2015/greenroomos
+$ docker container run -i -t --name GuardOS piotrit2015/greenroomos
 $ cd home
 $ mkdir <username>
 $ cd <username>
