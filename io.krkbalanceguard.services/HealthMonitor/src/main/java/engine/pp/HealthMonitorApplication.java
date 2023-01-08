@@ -12,7 +12,7 @@ import java.awt.EventQueue;
 @Controller
 @EnableAutoConfiguration
 @ComponentScan({"engine.pp.services"})
-public class HealthMonitorapplication {
+public class HealthMonitorApplication {
 
 	public static void main(String[] args) {
 
