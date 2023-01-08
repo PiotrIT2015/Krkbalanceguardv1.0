@@ -3,7 +3,7 @@
 You have to use the new 'Strategy.h' file to create correct DLL file for Robot Soccer v1.5a
 What you have to do is just replace your old 'Strategy.h' file to new 'Strategy.h' file which is in this folder.
 
-
+![screenshot01](https://user-images.githubusercontent.com/17832552/211208997-fb2d7c40-7252-4cee-9c9c-f95bb157b7c1.jpg)
 
 ---------------------------------------------------------------------------------------------
 The Strategy project is based on the Win32 DLL wizard option in VC++.
